@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@drawable/ios_background"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="50dp">
+    <androidx.appcompat.widget.AppCompatEditText
+        android:theme="@style/IOSEditText"
+        android:textSize="13sp"
+        android:id="@+id/widget_change_label_edit_text"
+        android:background="@drawable/ios_edittext_background"
+        android:padding="10dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:clickable="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="@string/appwidget_text"
+        android:maxLines="1"
+        android:inputType="none"
+        android:textIsSelectable="true"/>
+    <com.luutinhit.launcher6.util.TextViewCustomFont
+        android:textSize="13sp"
+        android:textColor="@color/action_back_color"
+        android:gravity="center"
+        android:id="@+id/widget_change_label_confirm"
+        android:background="@drawable/ios_button_state"
+        android:padding="10dp"
+        android:focusable="true"
+        android:clickable="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@android:string/ok"/>
+</androidx.appcompat.widget.LinearLayoutCompat>

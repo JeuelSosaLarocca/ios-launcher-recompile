@@ -1,0 +1,173 @@
+class	obf	obf_params	proposal	aosp_params	score	second	evidence
+AppInfo	m7981f	ArrayList	dumpApplicationInfoList	String,String,ArrayList	2.14	0.86	
+AppInfo	m7982g	AbstractC2662f	initFlags	LauncherActivityInfoCompat	1.27	0.43	
+AppWidgetResizeFrame	m8031d	int,int,AppWidgetHostView,Launcher	updateWidgetSizeRanges	AppWidgetHostView,Launcher,int,int	3.07	0.90	
+BaseRecyclerViewFastScrollBar	m8175a	int,int,int,MotionEvent	handleTouchEvent	MotionEvent,int,int,int	2.27	0.91	
+BubbleTextView	m7598G		updateIconState		2.39	2.31	
+BubbleTextView	m7599H	Drawable,int	setIcon	Drawable,int	2.11	1.39	
+BubbleTextView	m7600I		isLayoutHorizontal		1.54	2.18	
+BubbleTextView	m7601J		clearPressedBackground		2.23	2.27	
+CellLayout	m7626A	int,int,int,int,int,int,View,int[],int[],int	performReorder	int,int,int,int,int,int,View,int[],int,int	2.24	1.39	
+CellLayout	m7634b	View,int,int,int,int	addViewsToTempLocation	ArrayList,Rect,int[],View,ItemConfiguration	1.49	1.23	
+CellLayout	m7637e	InvariantDeviceProfile,boolean	computeEdge	int,int[]	1.46	1.22	
+CellLayout	m7638f	ItemConfiguration,View,int	animate		1.67	1.27	
+CellLayout	m7646o	int,int,int[]	findVacantCell	int,int,int[]	2.13	1.69	
+CellLayout	m7649r	int,int,int,int,int,int,int[],View,boolean,ItemConfiguration	findReorderSolution	int,int,int,int,int,int,int[],View,boolean,ItemConfiguration	2.34	0.83	
+CellLayout	m7655x	int,int,int,int,boolean[][],boolean	markCellsForView	int,int,int,int,boolean[][],boolean	2.49	1.25	
+CellLayout	m7657z	boolean	enableHardwareLayer	boolean	2.14	1.37	
+DatabaseHelper	m7615B	SQLiteDatabase,boolean	getMaxScreenRank		1.09	1.90	
+DatabaseHelper	m7616a	SQLiteDatabase	addWorkspacesTable	SQLiteDatabase	3.52	3.18	
+DatabaseHelper	m7617e	SQLiteDatabase,String,long	addIntegerColumn	SQLiteDatabase,String,long	9.06	1.40	 INTEGER NOT NULL DEFAULT  | ALTER TABLE favorites ADD COLUMN 
+DatabaseHelper	m7618h	SQLiteDatabase,boolean	removeOrphanedItems	SQLiteDatabase	1.26	2.52	
+DatabaseHelper	m7619A	String	hasScreenId	long	2.21	1.49	
+DatabaseHelper	m7620c	SQLiteDatabase,boolean	checkId	String,ContentValues	1.36	2.09	
+DatabaseHelper	m7621o	SQLiteDatabase	recreateWorkspaceTable	SQLiteDatabase	2.54	2.35	
+DatabaseHelper	m7622r	SQLiteDatabase	createEmptyDB	SQLiteDatabase	5.10	3.68	
+DatabaseHelper	m7623y		generateNewScreenId		8.97	1.75	Error: max screen id was not initialized
+DatabaseHelper	m7624z	SQLiteDatabase,AutoInstallsLayout	addScreenIdIfNecessary	long	0.59	0.89	
+DeviceProfile	m7812d		getWorkspacePadding	boolean	1.87	1.83	
+DeviceProfile	m7813e	int	computeAllAppsButtonSize	Context	1.17	1.06	
+DeviceProfile	m7814f	int,Resources	updateIconSize	float,int,Resources,DisplayMetrics	2.18	1.29	dimen.dragViewScale | dimen.dynamic_grid_search_bar_height
+DragController	m7869b	int,int	prepareAccessibleDrag	int,int	2.16	1.19	
+DragController	m7880n	View,Bitmap,WidgetsContainerView,PendingAddItemInfo,Rect,float	acquireVelocityTrackerAndAddMovement	MotionEvent	1.10	1.02	
+DragObject	m8050a	float[]	getVisualCenter	float[]	4.90	0.06	
+FastBitmapDrawable	m7679b	int,Bitmap	getBitmap		0.11	0.78	
+FastBitmapDrawable	m7680c	FastBitmapDrawableState,FastBitmapDrawableState	getBrightness		0.65	0.70	
+FastBitmapDrawable	m7681d	Bitmap	setBrightnessMatrix	ColorMatrix,int	0.26	1.17	
+FastBitmapDrawable	m7683e	Launcher	setGhostModeEnabled	boolean	1.31	1.27	
+FastBitmapDrawable	m7684f	FastBitmapDrawableState	getInterpolation	float	0.69	1.42	
+FastBitmapDrawable	m7685g	int	setPressed	boolean	1.47	1.09	
+Favorites	m7742a	long	getContentUri	long	4.93	0.57	
+FocusHelper	m7973a	CellLayout,boolean	onKey	View,int,KeyEvent	0.35	0.33	
+FocusHelper	m7974b	CellLayout,boolean	handleHotseatButtonKeyEvent	View,int,KeyEvent	0.33	0.35	
+FocusHelper	m7977e	Workspace,CellLayout,int,boolean	PagedFolderKeyEventListener	Folder	0.08	0.26	
+Folder	m7694I		run		2.32	2.36	
+Folder	m7695J	boolean	enableAccessibleDrag	boolean	2.26	2.20	
+Folder	m7700O	ShortcutInfo	getViewForInfo	ShortcutInfo	2.35	1.97	
+Folder	m7701P	DragObject	onDragExit	DragObject	2.63	2.56	
+Folder	m7702Q		positionAndSizeAsIcon		2.37	2.33	
+Folder	m7704T		animateClosed		2.42	2.37	
+Folder	m7705U	String	onAnimationEnd	Animator	1.50	1.50	
+Folder	m7706V	int,DragObject	showScrollHint	int,DragObject	2.82	1.46	
+FolderIcon	m7716g	Launcher,CellLayout,FolderInfo,IconCache	fromXml	int,Launcher,ViewGroup,FolderInfo,IconCache	2.21	0.63	id.folder_icon_name | string.folder_name_format
+FolderIcon	m7717i	BubbleTextView	getTopDrawable	TextView	1.38	0.90	
+FolderIcon	m7718b	Drawable,int,boolean,FolderReplaceWithItemRunnable	animateFirstItem	Drawable,int,boolean,Runnable	1.71	1.38	
+FolderIcon	m7719c	int	onDragEnter	Object	1.39	1.28	
+FolderIcon	m7721f		animateToAcceptState		2.43	2.41	
+FolderIcon	m7724l		animateToNaturalState		2.47	2.43	
+FolderIcon	m7725m	ItemInfo	willAcceptItem	ItemInfo	2.38	1.17	
+FolderInfo	m7676h	int,Context,boolean	setOption	int,boolean,Context	3.95	0.83	
+FolderRingAnimator	m7541a		animateToAcceptState		3.14	3.06	
+FolderRingAnimator	m7542b		animateToNaturalState		3.06	3.14	
+IconCache	m7987s	String,C2673q	getPackageKey	String,UserHandleCompat	1.52	0.96	
+IconCache	m7988A	Bitmap,String,int,int,int,String,int	newContentValues	Bitmap,String,int	2.51	0.60	
+IconCache	m7989B	C0059b,IconCacheEntry,boolean	getEntryFromDB	ComponentKey,CacheEntry,boolean	1.98	1.29	
+IconCache	m7990C	ComponentName,Bitmap,String,long,InvariantDeviceProfile	preloadIcon	ComponentName,Bitmap,int,String,long,InvariantDeviceProfile	2.32	1.29	
+IconCache	m7991D	ComponentName,C2673q	remove	ComponentName,UserHandleCompat	1.70	1.30	
+IconCache	m7993F	String,C2673q	run		1.37	1.36	
+IconCache	m7994G	String,C2673q	updateSystemStateString		2.10	1.25	
+IconCache	m7996I	AbstractC2662f	updateTitleAndIcon	AppInfo	0.53	1.14	
+IconCache	m7997J	HashSet	updateDBIcons	UserHandleCompat,List,Set	2.15	1.25	
+IconCache	m7998K	BubbleTextView,ItemInfo	updateIconInBackground	BubbleTextView,ItemInfo	1.86	0.72	
+IconCache	m7999L	String,C2673q	updateIconsForPkg	String,UserHandleCompat	1.93	1.21	
+IconCache	m8000a	String,C2673q,int	onUpgrade	SQLiteDatabase,int,int	1.12	1.28	
+IconCache	m8001b	String,C2673q,String	getTitleAndIcon	AppInfo,LauncherActivityInfoCompat,boolean	1.24	1.29	
+IconCache	m8003d	AbstractC2662f,PackageInfo,long,int,String,int	cachePackageInstallInfo	String,UserHandleCompat,Bitmap,CharSequence	1.15	1.36	
+IconCache	m8004e	ComponentName,AbstractC2662f,C2673q,boolean,boolean	cacheLocked	ComponentName,LauncherActivityInfoCompat,UserHandleCompat,boolean,boolean	1.66	0.72	
+IconCache	m8005f	String,C2673q,int,String,int	onCreate	SQLiteDatabase	0.95	1.26	
+IconCache	m8006g	ComponentName	cancel		0.17	0.73	
+IconCache	m8007h	C0059b	clearDB	SQLiteDatabase	0.44	1.09	
+IconCache	m8008i	ComponentName	loadIconNoResize	Cursor,int,Options	0.50	0.79	
+IconCache	m8010k	PackageIconKey	IconDB	Context	0.45	1.06	
+IconCache	m8013n	int,Resources	IconLoadRequest	Runnable,Handler	0.57	0.81	
+IconCache	m8015p	Intent,C2673q	getIcon	Intent,UserHandleCompat	2.23	1.88	
+IconCache	m8016q	Bitmap	makeDefaultIcon	UserHandleCompat	1.14	1.58	
+IconCache	m8017r	C0059b,int,String,ApplicationInfo	scheduleNext		0.00	0.46	
+IconCache	m8018t	AppInfo,AbstractC2662f	getNonNullIcon	CacheEntry,UserHandleCompat	1.26	1.25	
+IconCache	m8019u	ShortcutInfo,ComponentName,AbstractC2662f,C2673q,boolean,boolean	getTitleAndIcon	ShortcutInfo,ComponentName,LauncherActivityInfoCompat,UserHandleCompat,boolean,boolean	1.83	1.78	
+IconCache	m8020v	ShortcutInfo,Intent,C2673q,boolean	getTitleAndIcon	ShortcutInfo,Intent,UserHandleCompat,boolean	2.04	1.27	
+IconCache	m8021w	String,C2673q,boolean,C3031f	getTitleAndIconForApp	String,UserHandleCompat,boolean,PackageItemInfo	2.21	1.78	
+IconCache	m8023y	int,String	onDowngrade	SQLiteDatabase,int,int	0.29	0.73	
+IconCache	m8024z	String	updateDbIcons	Set	0.94	1.68	
+InfoDropTarget	m7746G	Object	supportsDrop	DragSource,Object	0.71	0.51	
+InstallShortcutReceiver	m7747a	Context,Intent	convertToLauncherActivityIfPossible	PendingInstallShortcutInfo	2.17	1.96	
+InvariantDeviceProfile	m8146a		getPredefinedDeviceProfiles		1.60	0.50	
+Launcher	m7835w	Launcher,String	onReceive	Context,Intent	1.50	1.23	
+Launcher	m7836A	LauncherAppWidgetInfo	removeAppWidget	LauncherAppWidgetInfo	2.31	1.50	
+Launcher	m7837B		dumpLogsToLocalData		2.46	2.39	
+Launcher	m7838D		run		2.56	2.55	
+Launcher	m7840F	LauncherState	showAppsOrWidgets	State,boolean,boolean	1.74	1.49	
+Launcher	m7842H	ViewGroup	removeWidgetToAutoAdvance	View	1.50	1.42	
+Launcher	m7844J	Runnable	getTypedText		1.58	1.38	
+Launcher	m7845x	LauncherAppWidgetInfo,LauncherAppWidgetProviderInfo,boolean	addWidgetToAutoAdvanceIfNeeded	View,AppWidgetProviderInfo	1.83	1.16	
+Launcher	m7846y	PendingAddArguments	completeAdd	PendingAddArguments	2.34	1.07	
+LauncherAnimUtils	m7889c		cancelOnDestroyActivity	Animator	1.43	1.10	
+LauncherAppState	m7931d	Launcher	setLauncher	Launcher	2.37	0.63	
+LauncherAppWidgetHostView	m8051a		updateLastInflationOrientation		2.24	2.00	
+LauncherBackupHelper	m8082k	InvariantDeviceProfile	initDeviceProfileData	InvariantDeviceProfile	2.00	0.76	
+LauncherBackupHelper	m8084o	int,Bitmap	packIcon	int,Bitmap	2.83	0.82	
+LauncherBackupHelper	m8094j		getUserSelectionArg		2.43	2.00	
+LauncherBackupHelper	m8095l	C2586d	isBackupCompatible	Journal	1.45	1.07	
+LauncherBackupHelper	m8097p	int,LauncherAppWidgetProviderInfo	packWidget	int,ComponentName,UserHandleCompat	1.07	0.73	
+LauncherBackupHelper	m8098r	int,byte[]	unpackFavorite	byte[],int	1.88	1.08	Item not in desktop bounds, aborting restore | Item not in hotseat bounds, aborting restore
+LauncherBackupHelper	m8099s	C2587e,byte[],int	restoreIcon	Key,byte[],int	1.85	1.76	
+LauncherBackupHelper	m8100t	int,byte[]	restoreFavorite	Key,byte[],int	1.54	1.54	
+LauncherBackupHelper	m8101u	C2587e,byte[],int	restoreWidget	Key,byte[],int	2.09	1.88	
+LauncherClings	m8179a	View,MergedUiRunnable,String	synchonouslyMarkFirstRunClingDismissed	Context	1.02	0.91	
+LauncherModel	m7550F	Context,ContentValues,ItemInfo	updateItemInDatabaseHelper	Context,ContentValues,ItemInfo,String	1.51	1.93	
+LauncherModel	m7556f	Context,ArrayList	updateItem	long,ContentValues	2.58	2.38	
+LauncherModel	m7559i	ArrayList,int[]	checkItemPlacement	LongArrayMap,ItemInfo,ArrayList	1.28	1.12	
+LauncherModel	m7560j	Context,ArrayList,ArrayList	updateItemArrays	ItemInfo,long,StackTraceElement[]	0.95	0.99	
+LauncherModel	m7562o	Cursor,Context,Intent	filterItem	ItemInfo,ItemInfo,ComponentName	1.10	1.03	
+LauncherModel	m7567y	Runnable	initialize	Callbacks	1.50	1.39	
+LauncherModel	m7568z	Intent,C2673q	addAndBindAddedWorkspaceItems	Context,ArrayList	0.83	0.99	
+LauncherModel	m7573k	Intent,C2673q,Context,Cursor,int,int,boolean	getAppShortcutInfo	PackageManager,Intent,UserHandleCompat,Context,Cursor,int,int,boolean,boolean	2.71	1.62	
+LauncherModel	m7576p	Cursor,Context,int,C0062e	infoFromShortcutIntent	Context,Intent	1.45	1.27	
+LauncherModel	m7577u	HashSet,C2673q	onPackageIconsUpdated	HashSet,UserHandleCompat	2.22	1.80	
+LauncherModel	m7578v	int,String	onPackageChanged	String,UserHandleCompat	3.75	3.75	
+LauncherModel	m7579w	boolean	sortWorkspaceItemsSpatially	ArrayList	1.44	1.24	
+LauncherModel	m7580x	Runnable	runOnMainThread	new	1.32	1.50	
+LauncherProvider	m7763b	DatabaseHelper,SQLiteDatabase,String,ContentValues	generateNewItemId		0.75	0.75	
+LauncherProvider	m7764e	SQLiteDatabase,String	getMaxScreenRank		1.42	1.26	
+LoaderTask	m8260e		clearSBgDataStructures		5.10	2.54	
+LoaderTask	m8261a	int	bindWorkspace	int	2.98	2.21	
+LoaderTask	m8262b	LauncherModelCallbacks,ArrayList,ArrayList,C0081x,ArrayList	bindWorkspaceItems	Callbacks,ArrayList,ArrayList,LongArrayMap,ArrayList	1.84	1.76	
+LoaderTask	m8263c	C0081x,ItemInfo,ArrayList	checkItemPlacement	LongArrayMap,ItemInfo,ArrayList	2.37	0.57	
+LoaderTask	m8264d		loadAndBindAllApps		2.43	2.47	
+LoaderTask	m8265f		loadAllApps		2.89	2.53	
+LoaderTask	m8266g		waitForIdle		2.57	2.79	
+LoaderTask	m8267h		loadAndBindWorkspace		2.52	2.55	
+LoaderTask	m8268i		dumpState		2.53	2.52	
+LoaderTask	m8269j		onlyBindAllApps		3.12	2.50	
+LoaderTask	m8270k	int	runBindSynchronousPage	int	4.59	2.17	Error! Background loading is already running | Expecting AllApps and Workspace to be loaded
+LoaderTask	m8271l		stopLocked		5.10	2.59	
+LoaderTask	m8272m	LauncherModelCallbacks	tryGetCallbacks	Callbacks	2.11	0.79	
+LoaderTask	m8273n		updateIconCache		3.16	2.70	
+LoaderTask	m8274o	long,ContentValues	updateItem	long,ContentValues	4.85	1.14	
+PagedView	m7865v	CellLayout,int	addFullScreenPage	View	1.73	1.38	
+Partner	m7882a		hasDefaultLayout		2.00	2.00	
+Partner	m7883b		hasFolder		1.70	1.70	
+Partner	m7884e	Runnable	applyInvariantDeviceProfileOverrides	InvariantDeviceProfile,DisplayMetrics	0.74	0.20	
+PendingInstallShortcutInfo	m8109a		encodeToString		4.24	2.29	
+PendingInstallShortcutInfo	m8110b		getShortcutInfo		2.35	2.20	
+ReorderPreviewAnimation	m7744a		animate		2.68	2.52	
+SearchDropTargetBar	m7800a	View,float,TimeInterpolator	animateViewAlpha	LauncherViewPropertyAnimator,View,float,int	1.21	1.14	
+SearchDropTargetBar	m7801b	int,int	animateToState	State,int	1.53	1.36	
+ShortcutAndWidgetContainer	m8037a		setCellDimensions	int,int,int,int,int,int	1.04	0.00	
+ShortcutInfo	m8053f	AbstractC2662f,Context	fromActivityInfo	LauncherActivityInfoCompat,Context	2.25	0.65	
+ShortcutInfo	m8056i	IconCache	updateIcon	IconCache	2.21	1.78	
+Utilities	m8147A	int,ViewGroup	println	String,	1.36	1.35	
+Utilities	m8149a	Bitmap,float	pxFromDp	float,DisplayMetrics	0.86	1.14	
+Utilities	m8150b	Drawable,C2673q,Context	startActivityForResultSafely	Activity,Intent,int	0.72	0.61	
+Utilities	m8151c	ViewGroup	mapCoordInSelfToDescendent	View,View,int[]	0.49	0.76	
+Utilities	m8157i	Context,int,int,int,float	getCenterDeltaInScreenSpace	View,View,int[]	0.47	0.44	
+Utilities	m8158j	Bitmap,int,int,float	getDescendantCoordRelativeToParent	View,View,int[],boolean	0.73	0.50	
+Utilities	m8159k	Drawable	calculateTextHeight	float	0.54	0.78	
+Utilities	m8163o	String	isPropertyEnabled	String	1.70	0.90	
+Utilities	m8164p	Context,Bitmap	scaleRect	Rect,float	0.42	0.54	
+Utilities	m8165q	Context	getSearchWidgetProvider	Context	1.54	1.00	
+Utilities	m8167s	int	isViewAttachedToWindow	View	1.21	1.33	
+Utilities	m8168t		assertWorkerThread		1.92	1.67	
+Utilities	m8172x		getIconBitmapSize		1.67	1.92	
+Utilities	m8174z	Context	scaleRectAboutCenter	Rect,float	0.77	1.54	
+WidgetPreviewLoader	m8185b	String	onCancelled	Bitmap	0.84	0.74	

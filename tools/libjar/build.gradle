@@ -1,0 +1,98 @@
+// Prepares what app-source needs to build against the original app's library code:
+//   libsJar  -> app-source/app/libs/compile-libs.jar   (compile-only: renamed + made linkable for javac)
+//   libDex   -> app-source/app/libs/original-libs.dex  (runtime: original dex minus classes compiled from source)
+//   installTool -> app-source/tools-bin/                 (PostCompile, run by the app build after javac)
+//
+// Run `gradle libsJar libDex installTool` after changing the jadx map or the set of source files.
+plugins { id 'java' }
+
+repositories {
+    google()
+    mavenCentral()
+    maven { url 'https://maven.fabricmc.net/' }
+}
+
+configurations {
+    dex2jar
+    remapper {
+        attributes { attribute(Bundling.BUNDLING_ATTRIBUTE, objects.named(Bundling, Bundling.SHADOWED)) }
+    }
+    implementation.extendsFrom remapper
+}
+
+dependencies {
+    dex2jar 'de.femtopedia.dex2jar:dex-tools:2.4.38'
+    remapper 'net.fabricmc:tiny-remapper:0.15.0'
+    implementation 'org.ow2.asm:asm:9.8'
+    implementation 'com.android.tools.smali:smali-dexlib2:3.0.10'
+}
+
+def root = file('../..')
+def work = layout.buildDirectory.dir('work').get().asFile
+def appLibs = file("$root/app-source/app/libs")
+def srcRoot = file("$root/app-source/app/src/main/java")
+
+tasks.register('dexToJar', JavaExec) {
+    classpath = configurations.dex2jar
+    mainClass = 'com.googlecode.dex2jar.tools.Dex2jarCmd'
+    args '--force', '-o', "$work/original.jar", "$root/original-apk/base.apk"
+    doFirst { work.mkdirs() }
+}
+
+// mapping.tiny comes from tools/scripts/jobf_to_tiny.py (mappings/final.jobf + the jar's class list).
+tasks.register('remap', JavaExec) {
+    dependsOn 'dexToJar'
+    classpath = configurations.remapper
+    mainClass = 'net.fabricmc.tinyremapper.Main'
+    args "$work/original.jar", "$work/remapped.jar", "$work/mapping.tiny", 'official', 'named', '--ignoreConflicts', '--rebuildSourceFilenames'
+}
+
+tasks.register('desynth', JavaExec) {
+    dependsOn 'remap'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'Desynth'
+    args "$work/remapped.jar", "$work/desynth.jar", "$work/source-ctors.txt", "com/luutinhit/", "$work/extra-ctors.txt"
+}
+
+tasks.register('libsJar', Zip) {
+    dependsOn 'desynth'
+    // Drop only the app classes that are compiled from app-source (and their inner classes);
+    // app classes jadx did not export as sources stay in the jar.
+    from(zipTree("$work/desynth.jar")) {
+        exclude { element ->
+            def path = element.relativePath.pathString
+            if (!path.startsWith('com/luutinhit/') || !path.endsWith('.class')) return false
+            def top = path.substring(0, path.length() - '.class'.length()).split('\\$')[0]
+            new File(srcRoot, top + '.java').exists()
+        }
+    }
+    archiveFileName = 'compile-libs.jar'
+    destinationDirectory = appLibs
+    doLast { copy { from "$work/added-ctors.txt", "$work/mapping.tiny"; into appLibs } }
+}
+
+tasks.register('libDex', JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'DexFilter'
+    args "$root/original-apk/base.apk", "$work/mapping.tiny", srcRoot, "$appLibs/original-libs.dex"
+}
+
+tasks.register('installTool', Sync) {
+    from jar
+    from configurations.runtimeClasspath
+    into "$root/app-source/tools-bin"
+}
+
+// One-off source fix: restores constructors jadx did not emit (see CtorGen).
+tasks.register('ctorGen', JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'CtorGen'
+    args "$work/remapped.jar", srcRoot
+}
+
+// Original app classes (official names): PostCompile restores the synthetic members jadx did not emit.
+tasks.register('appClassesJar', Zip) {
+    from(zipTree("$work/original.jar")) { include 'com/luutinhit/**' }
+    archiveFileName = 'original-app-classes.jar'
+    destinationDirectory = appLibs
+}

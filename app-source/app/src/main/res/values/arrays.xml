@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="apps_library_category">
+        <item>@string/game</item>
+        <item>@string/audio</item>
+        <item>@string/video</item>
+        <item>@string/image</item>
+        <item>@string/social</item>
+        <item>@string/news</item>
+        <item>@string/maps</item>
+        <item>@string/productivity</item>
+        <item>@string/other</item>
+    </array>
+    <array name="auto_refresh_entry">
+        <item>@string/every_hour</item>
+        <item>@string/every_3_hour</item>
+        <item>@string/every_6_hour</item>
+        <item>@string/every_9_hour</item>
+        <item>@string/every_12_hour</item>
+    </array>
+    <array name="auto_refresh_value">
+        <item>1</item>
+        <item>3</item>
+        <item>6</item>
+        <item>9</item>
+        <item>12</item>
+    </array>
+    <array name="image_urls">
+        <item>https://cdn.jsdelivr.net/gh/LuuTinhIT/mvvdsnvdsjnsdvddafeeew/0.JPEG</item>
+        <item>https://cdn.jsdelivr.net/gh/LuuTinhIT/mvvdsnvdsjnsdvddafeeew/1.JPEG</item>
+        <item>https://cdn.jsdelivr.net/gh/LuuTinhIT/mvvdsnvdsjnsdvddafeeew/2.JPEG</item>
+        <item>https://cdn.jsdelivr.net/gh/LuuTinhIT/mvvdsnvdsjnsdvddafeeew/3.JPEG</item>
+        <item>https://cdn.jsdelivr.net/gh/LuuTinhIT/mvvdsnvdsjnsdvddafeeew/4.JPEG</item>
+        <item>https://cdn.jsdelivr.net/gh/LuuTinhIT/mvvdsnvdsjnsdvddafeeew/5.JPEG</item>
+        <item>https://cdn.jsdelivr.net/gh/LuuTinhIT/mvvdsnvdsjnsdvddafeeew/6.JPEG</item>
+        <item>https://cdn.jsdelivr.net/gh/LuuTinhIT/mvvdsnvdsjnsdvddafeeew/7.JPEG</item>
+        <item>https://cdn.jsdelivr.net/gh/LuuTinhIT/mvvdsnvdsjnsdvddafeeew/8.JPEG</item>
+        <item>https://cdn.jsdelivr.net/gh/LuuTinhIT/mvvdsnvdsjnsdvddafeeew/9.JPEG</item>
+        <item>https://cdn.jsdelivr.net/gh/LuuTinhIT/mvvdsnvdsjnsdvddafeeew/10.JPEG</item>
+        <item>https://cdn.jsdelivr.net/gh/LuuTinhIT/mvvdsnvdsjnsdvddafeeew/11.JPEG</item>
+        <item>https://cdn.jsdelivr.net/gh/LuuTinhIT/mvvdsnvdsjnsdvddafeeew/12.JPEG</item>
+        <item>https://cdn.jsdelivr.net/gh/LuuTinhIT/mvvdsnvdsjnsdvddafeeew/13.JPEG</item>
+        <item>https://cdn.jsdelivr.net/gh/LuuTinhIT/mvvdsnvdsjnsdvddafeeew/14.JPEG</item>
+        <item>https://cdn.jsdelivr.net/gh/LuuTinhIT/mvvdsnvdsjnsdvddafeeew/15.JPEG</item>
+        <item>https://cdn.jsdelivr.net/gh/LuuTinhIT/mvvdsnvdsjnsdvddafeeew/16.JPEG</item>
+        <item>https://cdn.jsdelivr.net/gh/LuuTinhIT/mvvdsnvdsjnsdvddafeeew/17.JPEG</item>
+        <item>https://cdn.jsdelivr.net/gh/LuuTinhIT/mvvdsnvdsjnsdvddafeeew/18.JPEG</item>
+        <item>https://cdn.jsdelivr.net/gh/LuuTinhIT/mvvdsnvdsjnsdvddafeeew/19.JPEG</item>
+        <item>https://cdn.jsdelivr.net/gh/LuuTinhIT/mvvdsnvdsjnsdvddafeeew/20.JPEG</item>
+        <item>https://cdn.jsdelivr.net/gh/LuuTinhIT/mvvdsnvdsjnsdvddafeeew/21.JPEG</item>
+        <item>https://cdn.jsdelivr.net/gh/LuuTinhIT/mvvdsnvdsjnsdvddafeeew/22.JPEG</item>
+        <item>https://cdn.jsdelivr.net/gh/LuuTinhIT/mvvdsnvdsjnsdvddafeeew/23.JPEG</item>
+        <item>https://cdn.jsdelivr.net/gh/LuuTinhIT/mvvdsnvdsjnsdvddafeeew/24.JPEG</item>
+        <item>https://cdn.jsdelivr.net/gh/LuuTinhIT/mvvdsnvdsjnsdvddafeeew/25.JPEG</item>
+        <item>https://cdn.jsdelivr.net/gh/LuuTinhIT/mvvdsnvdsjnsdvddafeeew/26.JPEG</item>
+        <item>https://cdn.jsdelivr.net/gh/LuuTinhIT/mvvdsnvdsjnsdvddafeeew/27.JPEG</item>
+        <item>https://cdn.jsdelivr.net/gh/LuuTinhIT/mvvdsnvdsjnsdvddafeeew/28.JPEG</item>
+        <item>https://cdn.jsdelivr.net/gh/LuuTinhIT/mvvdsnvdsjnsdvddafeeew/29.JPEG</item>
+        <item>https://cdn.jsdelivr.net/gh/LuuTinhIT/mvvdsnvdsjnsdvddafeeew/30.JPEG</item>
+        <item>https://cdn.jsdelivr.net/gh/LuuTinhIT/mvvdsnvdsjnsdvddafeeew/31.JPEG</item>
+        <item>https://cdn.jsdelivr.net/gh/LuuTinhIT/mvvdsnvdsjnsdvddafeeew/32.JPEG</item>
+        <item>https://cdn.jsdelivr.net/gh/LuuTinhIT/mvvdsnvdsjnsdvddafeeew/33.JPEG</item>
+        <item>https://cdn.jsdelivr.net/gh/LuuTinhIT/mvvdsnvdsjnsdvddafeeew/34.JPEG</item>
+        <item>https://cdn.jsdelivr.net/gh/LuuTinhIT/mvvdsnvdsjnsdvddafeeew/35.JPEG</item>
+        <item>https://cdn.jsdelivr.net/gh/LuuTinhIT/mvvdsnvdsjnsdvddafeeew/36.JPEG</item>
+        <item>https://cdn.jsdelivr.net/gh/LuuTinhIT/mvvdsnvdsjnsdvddafeeew/37.JPEG</item>
+        <item>https://cdn.jsdelivr.net/gh/LuuTinhIT/mvvdsnvdsjnsdvddafeeew/38.JPEG</item>
+        <item>https://cdn.jsdelivr.net/gh/LuuTinhIT/mvvdsnvdsjnsdvddafeeew/39.JPEG</item>
+        <item>https://cdn.jsdelivr.net/gh/LuuTinhIT/mvvdsnvdsjnsdvddafeeew/40.JPEG</item>
+        <item>https://cdn.jsdelivr.net/gh/LuuTinhIT/mvvdsnvdsjnsdvddafeeew/41.JPEG</item>
+        <item>https://cdn.jsdelivr.net/gh/LuuTinhIT/mvvdsnvdsjnsdvddafeeew/42.JPEG</item>
+        <item>https://cdn.jsdelivr.net/gh/LuuTinhIT/mvvdsnvdsjnsdvddafeeew/43.JPEG</item>
+        <item>https://cdn.jsdelivr.net/gh/LuuTinhIT/mvvdsnvdsjnsdvddafeeew/44.JPEG</item>
+        <item>https://cdn.jsdelivr.net/gh/LuuTinhIT/mvvdsnvdsjnsdvddafeeew/45.JPEG</item>
+        <item>https://cdn.jsdelivr.net/gh/LuuTinhIT/mvvdsnvdsjnsdvddafeeew/46.JPEG</item>
+        <item>https://cdn.jsdelivr.net/gh/LuuTinhIT/mvvdsnvdsjnsdvddafeeew/47.JPEG</item>
+        <item>https://cdn.jsdelivr.net/gh/LuuTinhIT/mvvdsnvdsjnsdvddafeeew/48.JPEG</item>
+        <item>https://cdn.jsdelivr.net/gh/LuuTinhIT/mvvdsnvdsjnsdvddafeeew/49.JPEG</item>
+        <item>https://cdn.jsdelivr.net/gh/LuuTinhIT/mvvdsnvdsjnsdvddafeeew/50.JPEG</item>
+    </array>
+    <array name="launch_broadcast_targets">
+    </array>
+    <array name="material_colors">
+        <item>#e33f0d</item>
+        <item>#ff7300</item>
+        <item>#e6b00f</item>
+        <item>#5cc819</item>
+        <item>#0fd3bc</item>
+        <item>#182dc5</item>
+        <item>#6026b3</item>
+        <item>#c31388</item>
+        <item>#e10e0e</item>
+    </array>
+    <array name="unit_entry">
+        <item>°C</item>
+        <item>°F</item>
+    </array>
+    <array name="unit_value">
+        <item>1</item>
+        <item>2</item>
+    </array>
+    <array name="which_wallpaper_options">
+        <item>@string/which_wallpaper_option_home_screen</item>
+        <item>@string/which_wallpaper_option_lock_screen</item>
+        <item>@string/which_wallpaper_option_home_screen_and_lock_screen</item>
+    </array>
+</resources>

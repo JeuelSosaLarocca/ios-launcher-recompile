@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <androidx.preference.SwitchPreferenceCompat
+        android:icon="@drawable/ic_blur"
+        android:title="@string/blur_dock"
+        android:key="preference_blur_dock"
+        android:defaultValue="true"/>
+    <androidx.preference.SwitchPreferenceCompat
+        android:icon="@drawable/ic_blur"
+        android:title="@string/blur_folder"
+        android:key="preference_blur_folder"
+        android:defaultValue="true"/>
+    <androidx.preference.SwitchPreferenceCompat
+        android:icon="@drawable/ic_blur"
+        android:title="@string/blur_widget"
+        android:key="preference_blur_widget"
+        android:defaultValue="true"/>
+    <androidx.preference.SwitchPreferenceCompat
+        android:icon="@drawable/ic_blur"
+        android:title="@string/blur_search_bar"
+        android:key="preference_blur_search"
+        android:defaultValue="true"/>
+</androidx.preference.PreferenceScreen>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.luutinhit.launcher6.FolderIcon xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center"
+    android:focusable="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.luutinhit.launcher6.BubbleTextView
+        android:id="@+id/folder_icon_name"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</com.luutinhit.launcher6.FolderIcon>

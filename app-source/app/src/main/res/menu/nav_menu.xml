@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:icon="@drawable/ic_reload"
+        android:id="@+id/nav_reload_launcher"
+        android:title="@string/reload_launcher"/>
+    <item
+        android:icon="@drawable/ic_policy"
+        android:id="@+id/nav_menu_policy"
+        android:title="@string/privacy_policy"/>
+    <item
+        android:icon="@drawable/ic_player"
+        android:id="@+id/nav_how_to_use"
+        android:title="@string/how_to_use"/>
+    <item
+        android:icon="@drawable/ic_web"
+        android:id="@+id/nav_menu_web"
+        android:title="@string/website"/>
+    <item
+        android:icon="@drawable/ic_info"
+        android:id="@+id/nav_menu_about"
+        android:title="@string/about"/>
+</menu>

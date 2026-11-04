@@ -1,0 +1,227 @@
+A0	0	
+A1	10	
+A2	2	
+A3	0	
+AbstractC1884l	0	
+AbstractC1885m	0	
+AbstractC4392b3	0	
+AbstractC4431o1	21	ItemInfo(12:  cellX=,  cellY=,  container=,  dropPos=) | AppInfo(9:  cellX=,  cellY=,  container=,  dropPos=) | FolderInfo(8:  cellX=,  cellY=,  container=,  dropPos=)
+AbstractC4444s2	0	
+ActionModeCallbackC4448u0	0	
+B0	1	
+B1	1	
+B2	42	Stats(4: cellX, cellY, container, screen) | LauncherModel(2: com.android.launcher2.settings, launcher-loader) | LauncherAppsCompat(2: android.intent.action.MANAGED_PROFILE_ADDED, android.intent.action.MANAGED_PROFILE_REMOVED)
+B3	0	
+C0	0	
+C1	0	
+C1831C	0	
+C1832D	0	
+C1833E	4	
+C1834F	4	LauncherModel(1: null)
+C1835G	0	
+C1836H	2	
+C1837I	4	LauncherClings(3: scaleX, scaleY, translationY) | LauncherStateTransitionAnimation(2: translationX, translationY) | LauncherExtension(1: translationX)
+C1838J	0	
+C1839K	0	
+C1840L	0	
+C1841M	1	DefaultLayoutParser(1: resolve)
+C1843O	0	
+C1844P	2	Stats(1: folder) | DefaultLayoutParser(1: folder)
+C1845Q	5	Partner(1: partner_folder)
+C1846S	0	
+C1848T	9	DefaultLayoutParser(7: appwidget, favorite, favorites, folder) | Stats(3: container, folder, screen)
+C1850V	9	
+C1852X	2	
+C1853Y	0	
+C1854Z	0	
+C1868b	0	
+C1869c	14	AppInfo(11:  cellX=,  cellY=,  container=,  dropPos=) | ItemInfo(10:  cellX=,  cellY=,  container=,  dropPos=) | FolderInfo(8:  cellX=,  cellY=,  container=,  dropPos=)
+C1871e	0	
+C1873g	23	LauncherSettings(1: itemType)
+C1874h	55	LauncherSettings(2: itemType, title)
+C1883k	36	Stats(1: hotseat)
+C1887o	2	
+C1888p	1	LauncherStateTransitionAnimation(1: alpha) | BaseRecyclerViewFastScrollPopup(1: alpha) | AllAppsBackgroundDrawable(1: alpha)
+C1891s	0	
+C1895w	0	
+C1896x	2	DefaultLayoutParser(2: favorite, resolve)
+C1897y	0	
+C1898z	0	
+C2	66	LauncherSettings(2: intent, workspaceScreens) | Stats(1: intent) | LauncherFiles(1: launcher.db)
+C3	0	
+C4385a0	0	
+C4386a1	1	
+C4387a2	15	LauncherAppsCompat(2: android.intent.action.MANAGED_PROFILE_ADDED, android.intent.action.MANAGED_PROFILE_REMOVED) | LauncherAppState(1: LauncherAppState inited before app context set)
+C4388a3	0	
+C4390b1	0	
+C4391b2	0	
+C4394c1	2	
+C4395c2	0	
+C4398d1	119	LauncherSettings(1: icon) | LauncherFiles(1: app_icons.db) | InstallShortcutReceiver(1: icon)
+C4400e0	0	
+C4401e1	0	
+C4403f0	0	
+C4404f1	0	
+C4406g0	0	
+C4407g1	0	
+C4408g2	7	LauncherClings(2: scaleX, scaleY)
+C4410h1	0	
+C4411h2	4	LauncherAppWidgetInfo(1: AppWidget(id=)
+C4413i1	0	
+C4414i2	3	
+C4415j0	0	
+C4417j2	56	LauncherSettings(8: icon, iconPackage, iconResource, iconType) | Stats(5: cellX, cellY, container, intent) | InstallShortcutReceiver(2: icon, iconResource)
+C4419k1	19	InstallShortcutReceiver(3: intent.launch, isAppShortcut, userHandle)
+C4422l1	0	
+C4424m0	0	
+C4425m1	20	InvariantDeviceProfile(3: All Device Profiles must have an odd number of hotseat spaces, Large Phone, Nexus 5)
+C4428n1	0	
+C4433p0	0	
+C4436q0	0	
+C4453v2	0	
+C4454w0	0	
+C4460y0	0	
+C4463z0	0	
+ChoreographerFrameCallbackC4451v0	4	LauncherClings(2: scaleX, scaleY)
+D0	0	
+D1	1	
+D2	0	
+d3	0	
+E0	11	FolderInfo(9:  cellX=,  cellY=,  container=,  dropPos=) | ItemInfo(8:  cellX=,  cellY=,  container=,  dropPos=) | AppInfo(8:  cellX=,  cellY=,  container=,  dropPos=)
+E1	0	
+E2	0	
+e3	0	
+EnumC4418k0	0	
+F0	0	
+F1	0	
+F2	1	
+f3	4	
+G0	1	LauncherStateTransitionAnimation(1: alpha) | BaseRecyclerViewFastScrollPopup(1: alpha) | AllAppsBackgroundDrawable(1: alpha)
+G1	0	
+G2	2	
+g3	19	LauncherSettings(6: icon, iconPackage, iconResource, iconType) | ShortcutInfo(2: ShortcutInfo(title=, intent=) | InstallShortcutReceiver(2: icon, iconResource)
+H0	0	
+H1	0	
+H2	1	
+h3	0	
+HandlerC1849U	0	
+I0	0	
+I1	0	
+I2	1	
+i3	0	
+InterfaceC1842N	0	
+InterfaceC1851W	0	
+InterfaceC1875i	0	
+InterfaceC1882j	0	
+InterfaceC1886n	0	
+InterfaceC4389b0	0	
+InterfaceC4393c0	0	
+InterfaceC4397d0	0	
+InterfaceC4409h0	0	
+InterfaceC4412i0	0	
+InterfaceC4416j1	0	
+InterfaceC4420k2	0	
+InterfaceC4438q2	0	
+InterfaceC4447t2	0	
+J0	1	
+J1	5	
+J2	0	
+j3	0	
+K0	0	
+K1	0	
+K2	10	
+k3	0	
+L0	12	
+L1	0	
+L2	1	LauncherViewPropertyAnimator(1: Not implemented)
+l3	0	
+M0	0	
+M1	0	
+M2	0	
+m3	0	
+N0	0	
+N1	0	
+N2	0	
+n3	13	Utilities(1: ^[\\s|\\p{javaSpaceChar}]*(.*)[\\s|\\p{javaSpaceChar}]*$) | MigrateFromRestoreTask(1:  + TextUtils.join()
+O0	0	
+O1	0	
+O2	0	
+o3	0	
+P0	23	
+P1	0	
+P2	0	
+p3	7	
+Q0	0	
+Q1	0	
+Q2	3	
+q3	4	
+R0	0	
+R1	0	
+R2	0	
+r3	0	
+RunnableC1829A	0	
+RunnableC1830B	6	WallpaperUtils(2: wallpaper.height, wallpaper.width)
+RunnableC1855a	0	
+RunnableC1870d	0	
+RunnableC1889q	0	
+RunnableC1893u	0	
+RunnableC4396c3	0	
+RunnableC4402e2	0	
+RunnableC4405f2	0	
+RunnableC4423l2	2	LauncherClings(2: cling_gel.migration.dismissed, cling_gel.workspace.dismissed)
+RunnableC4434p1	0	
+RunnableC4435p2	0	
+RunnableC4439r0	0	
+RunnableC4440r1	0	
+RunnableC4442s0	0	
+RunnableC4450u2	0	
+RunnableC4456w2	0	
+RunnableC4457x0	0	
+RunnableC4459x2	6	
+RunnableC4462y2	0	
+RunnableC4465z2	0	
+S0	0	
+S1	0	
+S2	0	
+s3	3	LauncherFiles(1: widgetpreviews.db)
+T0	0	
+T1	0	
+T2	1	LauncherStateTransitionAnimation(1: translationX) | LauncherExtension(1: translationX)
+t3	0	
+U0	0	
+U1	0	
+U2	0	
+u3	0	
+V0	11	
+V1	6	
+V2	0	
+v3	0	
+ViewOnClickListenerC4432o2	2	LauncherClings(1: crop_bg_top_and_sides)
+ViewOnClickListenerC4452v1	0	
+ViewOnClickListenerC4455w1	0	
+ViewOnClickListenerC4458x1	0	
+ViewOnClickListenerC4461y1	0	
+ViewOnClickListenerC4464z1	0	
+ViewOnFocusChangeListenerC4430o0	0	
+ViewOnKeyListenerC1872f	8	AppWidgetResizeFrame(2: height, width)
+ViewOnKeyListenerC4427n0	0	
+ViewOnKeyListenerC4445t0	0	
+ViewOnLongClickListenerC4426m2	0	
+ViewTreeObserverOnDrawListenerC4421l0	0	
+ViewTreeObserverOnGlobalLayoutListenerC4429n2	4	LauncherClings(4: crop_bg_top_and_sides, scaleX, scaleY, translationY) | LauncherStateTransitionAnimation(1: translationY)
+W0	0	
+W1	126	Launcher(20: Launcher, Unknown item type: , launcher.add_cell_x, launcher.add_cell_y) | Stats(4: container_page, homescreen, source, sub_container_page) | LauncherClings(2: scaleX, scaleY)
+W2	5	LauncherClings(3: scaleX, scaleY, translationY) | LauncherStateTransitionAnimation(2: translationX, translationY) | LauncherExtension(1: translationX)
+w3	0	
+X0	0	
+X1	0	
+X2	1	
+x3	0	
+Y0	0	
+Y1	0	
+Y2	0	
+y3	0	
+Z0	18	
+Z1	14	
+Z2	0	
+z3	11	

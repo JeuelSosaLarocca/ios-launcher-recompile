@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.luutinhit.launcher6.PageIndicatorMarker xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_gravity="center_vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp">
+    <ImageView
+        android:id="@+id/marker"
+        android:background="@drawable/ic_indicator_current"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="fitCenter"
+        android:importantForAccessibility="no"/>
+</com.luutinhit.launcher6.PageIndicatorMarker>

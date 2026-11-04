@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center_vertical"
+    android:id="@+id/app_about"
+    android:background="@drawable/item_button_state"
+    android:focusable="true"
+    android:clickable="true"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/shortcut_info_item_height">
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/shortcut_info_icon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_margin="@dimen/margin_icon"
+        android:src="@drawable/ic_about"
+        android:scaleType="centerInside"/>
+    <com.luutinhit.launcher6.util.TextViewCustomFont
+        android:textSize="15dp"
+        android:id="@+id/shortcut_info_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_icon"
+        android:text="@string/about"/>
+</LinearLayout>

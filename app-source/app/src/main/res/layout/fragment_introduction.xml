@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:gravity="center_horizontal"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:textSize="36sp"
+            android:textColor="@android:color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/introduction1"
+            android:fontFamily="sans-serif-light"/>
+        <Button
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#333"
+            android:id="@+id/activate_button"
+            android:background="@drawable/circle"
+            android:layout_width="@dimen/activate_button_size"
+            android:layout_height="@dimen/activate_button_size"
+            android:layout_marginTop="@dimen/activate_button_margin_top"
+            android:text="@string/activate"
+            android:fontFamily="sans-serif-light"/>
+    </LinearLayout>
+</FrameLayout>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <androidx.preference.ListPreference
+        android:icon="@drawable/ic_weather"
+        android:entries="@array/unit_entry"
+        android:title="@string/unit"
+        android:key="preference_unit"
+        android:summary="%s"
+        android:defaultValue="1"
+        android:entryValues="@array/unit_value"/>
+    <androidx.preference.ListPreference
+        android:icon="@drawable/ic_weather"
+        android:entries="@array/auto_refresh_entry"
+        android:title="@string/auto_refresh"
+        android:key="preference_auto_refresh"
+        android:summary="%s"
+        android:defaultValue="1"
+        android:entryValues="@array/auto_refresh_value"/>
+</androidx.preference.PreferenceScreen>

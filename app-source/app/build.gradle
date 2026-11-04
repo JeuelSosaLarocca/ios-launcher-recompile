@@ -1,0 +1,215 @@
+import com.android.build.api.artifact.ScopedArtifact
+import com.android.build.api.variant.ScopedArtifacts
+
+import java.util.zip.ZipEntry
+import java.util.zip.ZipFile
+import java.util.zip.ZipOutputStream
+
+plugins {
+    id 'com.android.application'
+}
+
+// How this project builds (see tools/libjar for the inputs in libs/):
+//   * javac compiles the decompiled app sources against libs/compile-libs.jar, the original library
+//     bytecode renamed with the jadx map. That jar is compile-only.
+//   * PostCompile renames the compiled classes back to the original names and undoes calls to
+//     constructors that only exist in compile-libs.jar.
+//   * the APK ships libs/original-libs.dex (the original library dex, untouched) next to the app dex.
+//   * the app dex itself is rebuilt by DexMerge from the ORIGINAL app classes; only methods that call
+//     JadxSupport.useSource() (and compiled code they reach) come from the sources.
+
+android {
+    namespace 'com.luutinhit.launcherios'
+    compileSdk {
+        version = release(36) {
+            minorApiLevel = 1
+        }
+    }
+
+    defaultConfig {
+        applicationId 'com.luutinhit.launcherios'
+        minSdk 21
+        targetSdk 36
+        versionCode 892
+        versionName '8.9.2'
+        multiDexEnabled true
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+        }
+        release {
+            minifyEnabled false
+            signingConfig signingConfigs.debug
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    androidResources {
+        // The prebuilt library bytecode has resource IDs inlined, so every resource must keep
+        // the ID it had in the original APK (taken from the decompiled public.xml).
+        additionalParameters += ['--stable-ids', file('stable-ids.txt').path]
+    }
+
+    lint {
+        abortOnError false
+        checkReleaseBuilds false
+    }
+
+    packaging {
+        // The original APK ships native libs uncompressed (extractNativeLibs=false); the jniLibs
+        // come from original-apk/split_config.arm64_v8a.apk.
+        jniLibs {
+            useLegacyPackaging = false
+        }
+    }
+
+    defaultConfig {
+        ndk { abiFilters 'arm64-v8a' }
+    }
+}
+
+dependencies {
+    compileOnly files('libs/compile-libs.jar')
+}
+
+abstract class PostCompileTask extends DefaultTask {
+    @InputFiles @PathSensitive(PathSensitivity.RELATIVE)
+    abstract ListProperty<RegularFile> getAllJars()
+
+    @InputFiles @PathSensitive(PathSensitivity.RELATIVE)
+    abstract ListProperty<Directory> getAllDirectories()
+
+    @Classpath
+    abstract ConfigurableFileCollection getToolClasspath()
+
+    @InputFiles @PathSensitive(PathSensitivity.NONE)
+    abstract ConfigurableFileCollection getLibInputs()
+
+    @Internal
+    abstract DirectoryProperty getLibsDir()
+
+    @OutputFile
+    abstract RegularFileProperty getOutput()
+
+    @javax.inject.Inject
+    abstract ExecOperations getExecOperations()
+
+    @TaskAction
+    void run() {
+        def merged = new File(temporaryDir, 'classes.jar')
+        def seen = new HashSet<String>()
+        merged.withOutputStream { os ->
+            def zout = new ZipOutputStream(os)
+            allDirectories.get().each { dir ->
+                dir.asFile.eachFileRecurse(groovy.io.FileType.FILES) { f ->
+                    def name = dir.asFile.toPath().relativize(f.toPath()).toString().replace(File.separatorChar, '/' as char)
+                    if (seen.add(name)) {
+                        zout.putNextEntry(new ZipEntry(name)); zout.write(f.bytes); zout.closeEntry()
+                    }
+                }
+            }
+            allJars.get().each { jar ->
+                new ZipFile(jar.asFile).withCloseable { zf ->
+                    zf.entries().each { e ->
+                        if (!e.directory && seen.add(e.name)) {
+                            zout.putNextEntry(new ZipEntry(e.name)); zout.write(zf.getInputStream(e).bytes); zout.closeEntry()
+                        }
+                    }
+                }
+            }
+            zout.close()
+        }
+        def libs = libsDir.get().asFile
+        execOperations.javaexec {
+            classpath = toolClasspath
+            mainClass = 'PostCompile'
+            args merged, output.get().asFile, new File(libs, 'mapping.tiny'), new File(libs, 'compile-libs.jar'),
+                    new File(libs, 'added-ctors.txt'), new File(libs, 'original-app-classes.jar')
+        }
+    }
+}
+
+androidComponents {
+    onVariants(selector().all()) { variant ->
+        def postCompile = project.tasks.register("postCompile${variant.name.capitalize()}", PostCompileTask) {
+            toolClasspath.from(fileTree(rootProject.file('tools-bin')) { include '*.jar' })
+            libsDir.set(project.layout.projectDirectory.dir('libs'))
+            libInputs.from('libs/mapping.tiny', 'libs/compile-libs.jar', 'libs/added-ctors.txt', 'libs/original-app-classes.jar')
+        }
+        variant.artifacts.forScope(ScopedArtifacts.Scope.PROJECT)
+                .use(postCompile)
+                .toTransform(ScopedArtifact.CLASSES.INSTANCE, { it.allJars }, { it.allDirectories }, { it.output })
+    }
+}
+
+// Replaces the APK's dex with the merged app dex (DexMerge) plus the original library dex, then aligns and re-signs it.
+// Output: app/build/outputs/apk/<variant>/app-<variant>-full.apk
+def sdkDir = androidComponents.sdkComponents.sdkDirectory
+
+['debug', 'release'].each { buildType ->
+    def cap = buildType.capitalize()
+    tasks.register("assemble${cap}Full") {
+        dependsOn "assemble${cap}"
+        def apkDir = layout.buildDirectory.dir("outputs/apk/$buildType")
+        def libDex = file('libs/original-libs.dex')
+        def originalApk = rootProject.file('../original-apk/base.apk')
+        def toolJars = fileTree(rootProject.file('tools-bin')) { include '*.jar' }
+        inputs.file(libDex)
+        inputs.file(originalApk)
+        inputs.files(toolJars)
+        inputs.file(apkDir.map { it.file("app-${buildType}.apk") })
+        outputs.file(apkDir.map { it.file("app-$buildType-full.apk") })
+        doLast {
+            def dir = apkDir.get().asFile
+            def src = new File(dir, "app-${buildType}.apk")
+            def unaligned = new File(temporaryDir, 'unaligned.apk')
+            def out = new File(dir, "app-$buildType-full.apk")
+            def appDex = new File(temporaryDir, 'app.dex')
+            providers.javaexec {
+                classpath = toolJars
+                mainClass = 'DexMerge'
+                args originalApk, libDex, src, appDex
+            }.result.get()
+            unaligned.withOutputStream { os ->
+                def zout = new ZipOutputStream(os)
+                new ZipFile(src).withCloseable { zf ->
+                    zf.entries().each { e ->
+                        if (e.name.startsWith('META-INF/') && (e.name.endsWith('.SF') || e.name.endsWith('.RSA') || e.name.endsWith('.MF'))) return
+                        if (e.name ==~ /classes\d*\.dex/) return  // replaced by the merged app dex
+                        def ne = new ZipEntry(e.name)
+                        if (e.method == ZipEntry.STORED) {
+                            ne.method = ZipEntry.STORED; ne.size = e.size; ne.compressedSize = e.size; ne.crc = e.crc
+                        }
+                        zout.putNextEntry(ne); zout.write(zf.getInputStream(e).bytes); zout.closeEntry()
+                    }
+                }
+                zout.putNextEntry(new ZipEntry('classes.dex')); zout.write(appDex.bytes); zout.closeEntry()
+                zout.putNextEntry(new ZipEntry('classes2.dex')); zout.write(libDex.bytes); zout.closeEntry()
+                zout.close()
+            }
+            def bt = new File(sdkDir.get().asFile, 'build-tools').listFiles().findAll { it.isDirectory() }
+                    .max { a, b -> GradleVersion.version(a.name) <=> GradleVersion.version(b.name) }
+            def ext = System.getProperty('os.name').toLowerCase().contains('win')
+            // a stale .idsig can be held open by an earlier `adb install` (incremental), which makes apksigner fail
+            new File(out.path + '.idsig').delete()
+            providers.exec { commandLine new File(bt, ext ? 'zipalign.exe' : 'zipalign'), '-p', '-f', '4', unaligned, out }.result.get()
+            providers.exec {
+                commandLine new File(bt, ext ? 'apksigner.bat' : 'apksigner'), 'sign',
+                        '--ks', "${System.getProperty('user.home')}/.android/debug.keystore",
+                        '--ks-pass', 'pass:android', '--ks-key-alias', 'androiddebugkey', '--key-pass', 'pass:android', out
+            }.result.get()
+            logger.lifecycle("Full APK: $out (merged app dex + original library dex)")
+        }
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.compilerArgs += ['-Xmaxerrs', '10000', '-nowarn', '-Xlint:none']
+    options.encoding = 'UTF-8'
+}

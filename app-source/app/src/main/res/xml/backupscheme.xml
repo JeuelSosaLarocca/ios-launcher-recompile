@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<full-backup-content>
+    <include
+        domain="database"
+        path="launcher.db"/>
+    <include
+        domain="sharedpref"
+        path="com.luutinhit.launcher6.prefs.xml"/>
+</full-backup-content>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.luutinhit.launcher6.PageIndicator xmlns:android="http://schemas.android.com/apk/res/android" xmlns:launcher="http://schemas.android.com/apk/res-auto"
+    android:gravity="center"
+    android:padding="3dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:animateLayoutChanges="true"
+    launcher:hasBackground="false"
+    launcher:windowSize="@integer/config_maxNumberOfPageIndicatorsToShow"/>

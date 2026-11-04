@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:left="3dp"
+        android:top="3dp"
+        android:right="3dp"
+        android:bottom="3dp">
+        <shape>
+            <corners android:radius="@dimen/icon_round_corner"/>
+            <gradient
+                android:startColor="#61aada"
+                android:endColor="#0b5ba1"
+                android:angle="90"/>
+        </shape>
+    </item>
+    <item
+        android:drawable="@drawable/ic_weather_new"
+        android:left="3dp"
+        android:top="3dp"
+        android:right="3dp"
+        android:bottom="3dp"/>
+</layer-list>

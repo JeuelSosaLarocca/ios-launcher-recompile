@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/weather_sunrise"
+    android:background="@drawable/round_rect_qsb"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_constraintDimensionRatio="w, 1:1"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toEndOf="@+id/weather_uv"
+    app:layout_constraintTop_toBottomOf="@+id/daily_forecast">
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/icon_sunrise_sunset"
+        android:padding="3dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/ic_weather_sunset"
+        android:scaleType="fitStart"
+        android:tint="@color/title_color_tint"
+        android:layout_marginStart="@dimen/item_padding"
+        app:layout_constraintBottom_toBottomOf="@+id/title_sunrise_sunset"
+        app:layout_constraintDimensionRatio="h, 1:1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/title_sunrise_sunset"/>
+    <com.luutinhit.launcher6.util.TextViewCustomFont
+        android:textColor="@color/title_color_tint"
+        android:id="@+id/title_sunrise_sunset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/item_padding"
+        android:text="@string/sunset"
+        android:layout_marginEnd="@dimen/item_padding"
+        app:layout_constraintStart_toEndOf="@+id/icon_sunrise_sunset"
+        app:layout_constraintTop_toTopOf="parent"/>
+    <com.luutinhit.launcher6.util.TextViewCustomFont
+        android:textSize="25sp"
+        android:textColor="@color/white"
+        android:id="@+id/sunset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="06:12"
+        android:layout_marginStart="@dimen/item_padding"
+        android:layout_marginEnd="@dimen/item_padding"
+        app:customFont="light"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_sunrise_sunset"/>
+    <com.luutinhit.weather.utils.SunriseSunsetView
+        android:id="@+id/sunrise_sunset_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/sunrise"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sunset"/>
+    <com.luutinhit.launcher6.util.TextViewCustomFont
+        android:textColor="@color/white"
+        android:id="@+id/sunrise"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/item_padding"
+        android:text="@string/sunrise"
+        android:layout_marginStart="@dimen/item_padding"
+        android:layout_marginEnd="@dimen/item_padding"
+        app:customFont="light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
