@@ -46,10 +46,6 @@
     <uses-permission android:name="android.permission.REQUEST_DELETE_PACKAGES"/>
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"/>
-    <uses-permission android:name="com.google.android.gms.permission.AD_ID"/>
-    <uses-permission android:name="android.permission.ACCESS_ADSERVICES_AD_ID"/>
-    <uses-permission android:name="android.permission.ACCESS_ADSERVICES_ATTRIBUTION"/>
-    <uses-permission android:name="android.permission.ACCESS_ADSERVICES_TOPICS"/>
     <queries>
         <intent>
             <action android:name="android.intent.action.VIEW"/>
@@ -413,43 +409,6 @@
         <meta-data
             android:name="com.google.android.awareness.API_KEY"
             android:value="REPLACE_WITH_THE_KEY_FROM_YOUR_ORIGINAL_APK"/>
-        <meta-data
-            android:name="com.google.android.gms.ads.AD_MANAGER_APP"
-            android:value="true"/>
-        <meta-data
-            android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="@string/ad_app_id"/>
-        <meta-data
-            android:name="com.google.android.gms.ads.flag.OPTIMIZE_AD_LOADING"
-            android:value="true"/>
-        <activity
-            android:theme="@android:style/Theme.Translucent"
-            android:name="com.google.android.gms.ads.AdActivity"
-            android:exported="false"
-            android:configChanges="smallestScreenSize|screenSize|uiMode|screenLayout|orientation|keyboardHidden|keyboard"/>
-        <provider
-            android:name="com.google.android.gms.ads.MobileAdsInitProvider"
-            android:exported="false"
-            android:authorities="com.luutinhit.launcherios.mobileadsinitprovider"
-            android:initOrder="100"/>
-        <service
-            android:name="com.google.android.gms.ads.AdService"
-            android:enabled="true"
-            android:exported="false"/>
-        <activity
-            android:name="com.google.android.gms.ads.OutOfContextTestingActivity"
-            android:exported="false"
-            android:configChanges="smallestScreenSize|screenSize|uiMode|screenLayout|orientation|keyboardHidden|keyboard"/>
-        <activity
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
-            android:name="com.google.android.gms.ads.NotificationHandlerActivity"
-            android:exported="false"
-            android:taskAffinity=""
-            android:excludeFromRecents="true"
-            android:launchMode="singleTask"/>
-        <property
-            android:name="android.adservices.AD_SERVICES_CONFIG"
-            android:resource="@xml/gma_ad_services_config"/>
         <provider
             android:name="androidx.startup.InitializationProvider"
             android:exported="false"
@@ -572,9 +531,6 @@
             android:required="false"/>
         <uses-library
             android:name="androidx.window.sidecar"
-            android:required="false"/>
-        <uses-library
-            android:name="android.ext.adservices"
             android:required="false"/>
         <service
             android:name="androidx.room.MultiInstanceInvalidationService"

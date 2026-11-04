@@ -47,10 +47,6 @@
     <string name="activate">Activo</string>
     <string name="activity_not_available">La aplicación no está disponible</string>
     <string name="activity_not_found">La aplicación no está instalada.</string>
-    <string name="ad_app_id">ca-app-pub-3055946504065222~7834831449</string>
-    <string name="ad_unit_id">ca-app-pub-3055946504065222/6410069133</string>
-    <string name="ad_unit_id_weather">ca-app-pub-3055946504065222/7303779522</string>
-    <string name="ad_unit_id_weather_rewarded">ca-app-pub-3055946504065222/8583441297</string>
     <string name="add_remove_background">Agregar/eliminar fondo</string>
     <string name="add_to_folder">Añadir a carpeta: &lt;xliff:g example=\"Games\" id=\"name\" xmlns:xliff=\"urn:oasis:names:tc:xliff:document:1.2\"&gt;%1$s&lt;/xliff:g&gt;</string>
     <string name="add_to_folder_with_app">Añadir a la carpeta con &lt;xliff:g example=\"Games\" id=\"name\" xmlns:xliff=\"urn:oasis:names:tc:xliff:document:1.2\"&gt;%1$s&lt;/xliff:g&gt;</string>

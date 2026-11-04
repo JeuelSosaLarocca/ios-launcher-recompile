@@ -389,11 +389,7 @@ public class WeatherActivity extends AbstractActivityC0816d implements View.OnCl
 
     /* JADX INFO: renamed from: T */
     public final void m8369T(boolean z5) {
-        try {
-            AbstractC0626a.m1450a(this, getString(R.string.ad_unit_id_weather), new C3053d(new MergedCallbacks(25)), new C2140h(this, z5));
-        } catch (Throwable th) {
-            th.getMessage();
-        }
+        // Ads removed
     }
 
     /* JADX INFO: renamed from: U */

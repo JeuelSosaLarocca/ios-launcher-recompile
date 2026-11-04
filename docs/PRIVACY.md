@@ -1,6 +1,6 @@
 # Política de privacidad
 
-Última revisión: 4 de noviembre de 2026.
+Última revisión: 4 de noviembre de 2026 (anuncios eliminados).
 
 > Este texto describe qué hace con tus datos **esta copia recompilada** del launcher, según el código que contiene.
 > No es asesoramiento legal. Si alguna vez se distribuye a terceros, hay que revisarlo con un profesional y adaptarlo a las
@@ -27,11 +27,10 @@ Todo lo siguiente se procesa **en tu teléfono**. Los usos están deducidos del 
 | Lista de apps (`QUERY_ALL_PACKAGES`) | Mostrar tus apps en la pantalla de inicio, la biblioteca y la búsqueda | No |
 | Desinstalar (`REQUEST_DELETE_PACKAGES`) | Pedir al sistema que desinstale una app que elijas | No |
 | Bluetooth (`BLUETOOTH`) | Mostrar la batería de dispositivos conectados en el widget de batería | No |
-| Red (`INTERNET`, `ACCESS_NETWORK_STATE`) | Consultar el clima y cargar anuncios | Ver 3 |
+| Red (`INTERNET`, `ACCESS_NETWORK_STATE`) | Consultar el clima | Ver 3 |
 | Servicios en segundo plano (`FOREGROUND_SERVICE`, `RECEIVE_BOOT_COMPLETED`, `WAKE_LOCK`, `BROADCAST_STICKY`) | Actualizar el clima y recuperar el estado tras reiniciar | No |
 | Widgets (`BIND_APPWIDGET`) | Alojar widgets en la pantalla de inicio | No |
 | Vibración (`VIBRATE`) | Respuesta táctil | No |
-| Publicidad (`AD_ID`, `ACCESS_ADSERVICES_*`) | Los usa el SDK de anuncios (ver 3) | **Sí**, a Google |
 
 Lo que la app guarda en el teléfono: la disposición de tu pantalla de inicio, una caché de íconos, tus ajustes y los últimos
 datos del clima. Se borra al desinstalar la app o al borrar sus datos desde los ajustes de Android.
@@ -40,9 +39,9 @@ datos del clima. Se borra al desinstalar la app o al borrar sus datos desde los 
 
 1. **Clima.** Al actualizar el clima, la app consulta a *Visual Crossing* (`weather.visualcrossing.com`) con la ubicación o la
    ciudad que elegiste. Esa empresa recibe esa consulta y tu dirección IP, y se rige por su propia política.
-2. **Anuncios.** La app incluye el SDK *Google Mobile Ads* (AdMob). El código lo usa en la pantalla de ajustes y en la del
-   clima. Cuando se pide un anuncio, Google puede recibir tu identificador de publicidad, tu dirección IP y datos del
-   dispositivo y de la app, y se rige por la política de Google.
+2. **Anuncios.** Esta copia ya no muestra ni pide anuncios: se quitaron las llamadas de la pantalla de ajustes y del clima,
+   los permisos de publicidad (`AD_ID`, `ACCESS_ADSERVICES_*`) y los identificadores de AdMob. Los archivos del SDK de Google
+   Mobile Ads siguen dentro del paquete original de bibliotecas, pero el código no los usa ni los inicializa.
 3. **Nada más a propósito.** No encontré en la app cuentas, analítica propia ni servicios de estadísticas como Firebase. Pero
    la app incluye bibliotecas de terceros que no revisé línea por línea, así que no puedo garantizar que no haya otras
    conexiones.
@@ -53,13 +52,12 @@ El proyecto no vende datos, no hace perfiles y no comparte nada con nadie más.
 
 - **Permisos:** concedelos o retiralos en *Ajustes de Android → Apps → iOS Launcher → Permisos*. La app sigue funcionando sin
   ellos, pero los widgets que dependen de cada permiso dejan de funcionar.
-- **Identificador de publicidad:** en *Ajustes de Android → Google → Anuncios* puedes restablecerlo o borrarlo.
 - **Datos locales:** *Ajustes de Android → Apps → iOS Launcher → Almacenamiento → Borrar datos*, o desinstalar la app.
 - **Clima:** no actives la ubicación para el clima, o elegí una ciudad a mano si la app lo permite.
 
 ## 5. Menores
 
-La app no está dirigida a menores de edad ni les pide datos. Los anuncios los gestiona Google con sus propias reglas.
+La app no está dirigida a menores de edad ni les pide datos.
 
 ## 6. Cambios
 

@@ -174,13 +174,7 @@ public class SettingsView extends AbstractC1101c implements View.OnClickListener
 
     /* JADX INFO: renamed from: E */
     public final void m8335E() {
-        try {
-            C3053d c3053d = new C3053d(new MergedCallbacks(25));
-            Context context = this.f23549f0;
-            AbstractC0626a.m1450a(context, context.getString(R.string.ad_unit_id), c3053d, new C1066f(this));
-        } catch (Throwable th) {
-            th.getMessage();
-        }
+        // Ads removed
     }
 
     /* JADX INFO: renamed from: G */
