@@ -40,6 +40,19 @@ The banner must not be `gone`: the list's overscroll bounce (`D/C0157a`, case 11
 gone header that is a division by zero, `View.setScaleX(Infinity)` throws `IllegalArgumentException` and the launcher process crashed while
 scrolling the settings list. After the fix, four rounds of swipes with overscroll at both ends gave no crash.
 
+Sliding menu removed (`tools/scripts/remove_drawer_menu.py`, layouts + one new drawable + two additions in code). Its five entries went like this:
+privacy policy, how to use and about were web pages / a YouTube video of the original developer; they are rewritten in `docs/` of the repository
+and no longer open from the app; "Website" is dropped; "Reload launcher" is now the last row of the settings list.
+
+* `LockedDrawerLayout` (new, `launcher6/`): the root of `activity_main.xml` is this subclass of `DrawerLayout`, locked closed in its constructor.
+  `MainActivity` still does `(DrawerLayout) findViewById(R.id.drawer_layout)`, so the view has to stay; the hamburger button and the `NavigationView` are `gone`
+  and the `NavigationView` has no header and no menu any more. Because only the layout names this class, it is listed in
+  `app/compiled-extra-classes.txt`, a new optional argument of `DexMerge` (it ships a new class only when a marked method reaches it).
+* `MainActivity.reloadLauncher(View)` (new method, `useSource`): the confirmation dialog and the same broadcast the old menu entry sent
+  (`ACTION_FORCE_RELOAD_LAUNCHER`, then `finish()`); a row of `settings_view.xml` calls it with `android:onClick`. DexMerge adds it to the original class.
+* Checked on the phone: the list starts near the top, the new row opens the dialog, CANCELAR goes back to the list and ACEPTAR closes the screen without a
+  crash. Not checked: an edge swipe cannot be tested with `adb` (the left edge is the system back gesture); the lock rests on the constructor call.
+
 Not touched: the Play Store app's own shortcut on the home screen (and its App Store icon), and the `market://` fallback in
 `res/xml/default_workspace_*x4.xml`.
 

@@ -157,12 +157,21 @@
                     app:settingText="@string/notification_badges"/>
                 <com.luutinhit.launcherios.customsettings.SettingsItem
                     android:id="@+id/make_default_launcher"
+                    app:hideDivider="false"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:minHeight="48dp"
-                    app:hideDivider="true"
                     app:settingIcon="@drawable/ic_default"
                     app:settingText="Make Default Launcher"/>
+                <com.luutinhit.launcherios.customsettings.SettingsItem
+                    android:id="@+id/reload_launcher"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="48dp"
+                    android:onClick="reloadLauncher"
+                    app:hideDivider="true"
+                    app:settingIcon="@drawable/ic_reload_launcher"
+                    app:settingText="@string/reload_launcher"/>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView

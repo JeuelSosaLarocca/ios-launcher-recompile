@@ -1,0 +1,3 @@
+# Classes that exist only in the sources of this project and are referenced only from layouts / the manifest.
+# DexMerge ships a new class only when a method marked JadxSupport.useSource() reaches it, so these are listed by hand.
+com/luutinhit/launcher6/LockedDrawerLayout

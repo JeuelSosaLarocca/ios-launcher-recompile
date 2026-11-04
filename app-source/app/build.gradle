@@ -158,6 +158,8 @@ def sdkDir = androidComponents.sdkComponents.sdkDirectory
         dependsOn "assemble${cap}"
         def apkDir = layout.buildDirectory.dir("outputs/apk/$buildType")
         def libDex = file('libs/original-libs.dex')
+        def extraClasses = file('compiled-extra-classes.txt')
+        inputs.file(extraClasses)
         def originalApk = rootProject.file('../original-apk/base.apk')
         def toolJars = fileTree(rootProject.file('tools-bin')) { include '*.jar' }
         inputs.file(libDex)
@@ -174,7 +176,7 @@ def sdkDir = androidComponents.sdkComponents.sdkDirectory
             providers.javaexec {
                 classpath = toolJars
                 mainClass = 'DexMerge'
-                args originalApk, libDex, src, appDex
+                args originalApk, libDex, src, appDex, extraClasses
             }.result.get()
             unaligned.withOutputStream { os ->
                 def zout = new ZipOutputStream(os)

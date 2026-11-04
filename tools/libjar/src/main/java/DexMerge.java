@@ -26,6 +26,8 @@ import com.android.tools.smali.dexlib2.immutable.ImmutableField;
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod;
 
 import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
@@ -47,7 +49,9 @@ import java.util.Set;
  * </ul>
  * Library classes (everything in original-libs.dex) are left out; they ship in their own dex.
  *
- * Usage: DexMerge &lt;original.apk&gt; &lt;original-libs.dex&gt; &lt;compiled.apk&gt; &lt;out.dex&gt;
+ * Usage: DexMerge &lt;original.apk&gt; &lt;original-libs.dex&gt; &lt;compiled.apk&gt; &lt;out.dex&gt; [compiled-extra-classes.txt]
+ *
+ * compiled-extra-classes.txt: one class name per line (a/b/C or a.b.C) of new classes that only layouts refer to.
  */
 public final class DexMerge {
     private static final String SUPPORT = "Lcom/luutinhit/launcher6/JadxSupport;";
@@ -93,6 +97,17 @@ public final class DexMerge {
             }
         }
         int marked = work.size();
+        // classes that exist only in the sources and are referenced only from layouts/manifest (so nothing above reaches them)
+        if (args.length > 4) {
+            for (String line : Files.readAllLines(Path.of(args[4]))) {
+                String name = line.trim();
+                if (name.isEmpty() || name.startsWith("#")) continue;
+                String type = "L" + name.replace('.', '/') + ";";
+                ClassDef extra = compiled.get(type);
+                if (extra == null) throw new IllegalStateException("compiled-extra-classes.txt: no compiled class " + name);
+                if (!original.containsKey(type) && newClasses.add(type)) extra.getMethods().forEach(work::add);
+            }
+        }
         while (!work.isEmpty()) {
             Method m = work.pop();
             Map<String, Method> forClass = take.computeIfAbsent(m.getDefiningClass(), k -> new LinkedHashMap<>());

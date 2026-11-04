@@ -111,6 +111,26 @@ public class MainActivity extends AbstractActivityC0816d implements SharedPrefer
         Utilities.m8147A(z5 ? -1 : -16777216, this.f17280F);
     }
 
+    /**
+     * "Reload launcher": it used to be an entry of the sliding menu (removed). Now a row of the settings list,
+     * wired from the layout with android:onClick. Same behavior as before: ask, then tell the launcher to reload.
+     */
+    public void reloadLauncher(View view) {
+        com.luutinhit.launcher6.JadxSupport.useSource(); // added on purpose: moved here from the removed drawer menu
+        new android.app.AlertDialog.Builder(this)
+                .setTitle(R.string.reload_launcher)
+                .setPositiveButton(android.R.string.ok, (dialogInterface, i) -> {
+                    try {
+                        sendBroadcast(new Intent("com.luutinhit.launcherios.ACTION_FORCE_RELOAD_LAUNCHER"));
+                        finish();
+                    } catch (Throwable th) {
+                        th.getMessage();
+                    }
+                })
+                .setNegativeButton(android.R.string.cancel, null)
+                .show();
+    }
+
     @Override // P3.AbstractActivityC0816d, androidx.activity.AbstractActivityC1366f, android.app.Activity
     public final void onBackPressed() {
         m1820I();

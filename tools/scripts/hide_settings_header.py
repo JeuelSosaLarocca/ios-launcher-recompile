@@ -6,9 +6,7 @@ res/layout/activity_main.xml:
     scales the header with it; a gone view measures 0, the division gives Infinity and View.setScaleX() throws
     IllegalArgumentException, which crashed the launcher process while scrolling the list.
   * action_email    (the mail button)             -> gone
-  * action_navigation (menu button, white icon that sat on the banner) -> tinted with colorAccent so it shows on
-    the plain background
-  * scroll_settings (the list, anchored under the banner) -> layout_marginTop 64dp, so it starts below the menu button
+  (The menu button and the list margin are handled by remove_drawer_menu.py, which runs after this script.)
 
 Nothing is deleted: MainActivity still calls findViewById(R.id.header_layout / R.id.action_email) and
 setOnClickListener / setScaleX on them. Works from the original file and from an earlier version of this script
@@ -61,8 +59,6 @@ def main(root):
                  {"android:visibility": "invisible", "android:layout_height": "1dp"},
                  drop_attrs=("android:src", "android:adjustViewBounds"))
     t = edit_tag(t, "action_email", {"android:visibility": "gone"})
-    t = edit_tag(t, "action_navigation", {"android:tint": "@color/colorAccent"})
-    t = edit_tag(t, "scroll_settings", {"android:layout_marginTop": "64dp"}, drop_attrs=("app:layout_goneMarginTop",))
     write(p, t, nl)
     print(f"{p}: done")
 

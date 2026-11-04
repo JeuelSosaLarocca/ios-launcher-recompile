@@ -28,7 +28,8 @@ cartel de calificación).
 9. [Herramientas](#herramientas)
 10. [Depuración en el teléfono](#depuración-en-el-teléfono)
 11. [Estado y problemas conocidos](#estado-y-problemas-conocidos)
-12. [Aviso legal](#aviso-legal)
+12. [Documentos](#documentos)
+13. [Aviso legal](#aviso-legal)
 
 ## Qué cambia respecto al original
 
@@ -41,7 +42,8 @@ cartel de calificación).
 | Cambio automático de tema | `ThemeIconReloader` vacía la caché de íconos y recarga la pantalla cuando el sistema pasa de claro a oscuro, también si el cambio ocurrió con el launcher cerrado. |
 | Sin cartel de calificación | `IOSLauncher.startRatingActivity()` está vacío: el pedido de "5 estrellas" no aparece solo. Los botones de calificar de los ajustes siguen funcionando. |
 | Sin enlaces a Play Store | Se ocultan en los ajustes la tarjeta de "Clasificación 5 estrellas / Descarga otras aplicaciones" y la de las otras apps del desarrollador (Lock Screen, Control Center, AssistiveTouch); en la pantalla principal de la app, compartir (comparte un enlace de Play Store), calificar y el botón flotante de la estrella; y en la búsqueda, "Buscar en la tienda". En el manifest se desactiva `RatingActivity` y se quitan las marcas de distribución de Play. Es solo de recursos (`tools/scripts/remove_play_store_links.py`). No se tocó el acceso directo a la app Play Store de la pantalla de inicio. |
-| Ajustes sin cabecera | En la pantalla de ajustes de la app se quitan la imagen "LAUNCHER IOS" de arriba y el botón de correo; el botón de menú queda teñido para que se vea y la lista empieza debajo (`tools/scripts/hide_settings_header.py`). La imagen no se oculta con `gone` sino que queda invisible, de 1dp y sin imagen: el rebote del scroll divide por su altura y con altura 0 la app se cerraba al hacer scroll. |
+| Ajustes sin cabecera | En la pantalla de ajustes de la app se quitan la imagen "LAUNCHER IOS" de arriba y el botón de correo; (`tools/scripts/hide_settings_header.py`). La imagen no se oculta con `gone` sino que queda invisible, de 1dp y sin imagen: el rebote del scroll divide por su altura y con altura 0 la app se cerraba al hacer scroll. |
+| Sin menú lateral | Se quita el menú que se deslizaba desde la izquierda de los ajustes y su botón; la lista empieza arriba. "Política de privacidad", "Cómo utilizar" y "Acerca de" eran páginas web del desarrollador y pasan al repositorio, reescritas, en [`docs/`](docs/); "Sitio web" se elimina sin reemplazo; "Lanzador de recarga" es ahora la última fila de la lista de ajustes. El `DrawerLayout` y el `NavigationView` siguen en el layout (el código original los busca) pero ocultos y bloqueados (`tools/scripts/remove_drawer_menu.py`). |
 | Primera carga sin "Play Auto Installs" | `LauncherProvider.loadDefaultFavoritesIfNecessary()` ignora el layout de Samsung que dejaba íconos sin posición. |
 
 Cada cambio de comportamiento está registrado en [`app-source/docs/RECOMPILE-NOTES.md`](app-source/docs/RECOMPILE-NOTES.md).
@@ -90,6 +92,7 @@ flowchart TD
 app-source/                 Proyecto Gradle de la app (AGP 9.0.1, Gradle 9.3.0)
   app/build.gradle          Compilación, PostCompile, DexMerge, firma y alineado
   app/stable-ids.txt        IDs de recursos fijos
+  app/compiled-extra-classes.txt  Clases nuevas que solo usan los layouts (DexMerge las incluye)
   app/libs/                 mapping.tiny y added-ctors.txt (los .jar/.dex se generan, ver Compilar)
   app/src/main/java/        Código jadx corregido + JadxSupport + ThemeIconReloader
   app/src/main/res/         Recursos (incluye drawable/ y drawable-night/ con los íconos)
@@ -98,6 +101,7 @@ tools/
   libjar/                   Prepara librerías y herramientas: DexFilter, Desynth, CtorGen, PostCompile, DexMerge
   scripts/                  Scripts de Python que corrigen el código decompilado y generan íconos
   icondump/IconDump.java    Extrae los íconos reales de las apps instaladas en el teléfono
+docs/                       Política de privacidad, guía de uso y "Acerca de" (antes eran páginas web dentro de la app) e imágenes
 mappings/                   Nombres puestos a mano (manual.tsv) y el mapa de jadx del que salen
 app-source-lib-java/        Solo jadx-generated/public.xml
 docs/images/                Imágenes del README
@@ -177,7 +181,8 @@ La salida de DexMerge no aparece en el log de Gradle. Para ver qué métodos tom
 
 ```bash
 java -cp "app-source/tools-bin/*" DexMerge original-apk/base.apk \
-  app-source/app/libs/original-libs.dex app-source/app/build/outputs/apk/debug/app-debug.apk salida.dex
+  app-source/app/libs/original-libs.dex app-source/app/build/outputs/apk/debug/app-debug.apk salida.dex \
+  app-source/app/compiled-extra-classes.txt
 ```
 
 ## Instalar y usar
@@ -206,8 +211,12 @@ Sin esa marca el cambio se compila pero **no llega al APK**, porque se ejecuta e
   cartel de calificación volviera a aparecer.
 - Métodos que contienen `new java/lang/Object` mal tipado por dex2jar (`A2.run`, `W1.onCreate`) siguen usando la fuente.
 
-Métodos con `useSource` hoy: `LauncherProvider.loadDefaultFavoritesIfNecessary()`, `IOSLauncher.startRatingActivity()`
-y `LauncherAppState.getInstance()`.
+Métodos con `useSource` hoy: `LauncherProvider.loadDefaultFavoritesIfNecessary()`, `IOSLauncher.startRatingActivity()`,
+`LauncherAppState.getInstance()` y `MainActivity.reloadLauncher(View)` (un método nuevo, que el layout llama con
+`android:onClick`).
+
+**Clases nuevas que solo usa un layout** (por ejemplo `LockedDrawerLayout`): `DexMerge` solo incluye una clase nueva si algún
+método marcado la alcanza, así que estas se anotan a mano en `app-source/app/compiled-extra-classes.txt`.
 
 ## Íconos en claro y oscuro
 
@@ -246,6 +255,7 @@ python -I tools/scripts/build_theme_icons.py <carpeta-figma> <carpeta-íconos-de
 | `find_infinite_loops.py`, `mark_original_bytecode.py` | Detectan bucles infinitos y métodos que jadx marcó como dudosos. |
 | `build_theme_icons.py`, `tools/icondump` | Íconos claro/oscuro (ver arriba). |
 | `restore_api_key.py` | Restaura la clave de API del manifest desde tu APK. |
+| `remove_drawer_menu.py` | Quita el menú lateral de los ajustes y agrega "Lanzador de recarga" a la lista (layouts y un ícono). |
 | `hide_settings_header.py` | Oculta la imagen de cabecera y el botón de correo de los ajustes de la app (solo layout). |
 | `remove_play_store_links.py` | Oculta o quita lo que apunta a Play Store (recursos y manifest). Conserva los saltos de línea de cada archivo y se puede repetir sin efecto. |
 | `match_*.py`, `class_digest.py`, `method_summary.py` | Ayudas para ponerle nombres a mano al código ofuscado. |
@@ -282,6 +292,14 @@ adb exec-out run-as com.luutinhit.launcherios cat databases/launcher.db > launch
   de inicio borrando filas de `launcher.db` no sirve, porque el launcher vuelve a agregar a la última página las apps que no
   están en ninguna. La vía correcta es la función de apps ocultas del launcher. **Pendiente.**
 - Los íconos de Apple y de marcas de terceros están en `res/` (necesarios para compilar). Son de sus dueños.
+
+## Documentos
+
+Lo que antes eran páginas web abiertas desde el menú lateral de la app ahora vive aquí, reescrito:
+
+- [`docs/PRIVACY.md`](docs/PRIVACY.md): política de privacidad de esta copia (qué datos usa, qué sale del teléfono y qué puedes controlar).
+- [`docs/HOW-TO-USE.md`](docs/HOW-TO-USE.md): guía de uso (reemplaza el video de ayuda).
+- [`docs/ABOUT.md`](docs/ABOUT.md): qué es esta copia, qué cambia y los créditos.
 
 ## Aviso legal
 
