@@ -12,8 +12,7 @@ cartel de calificación).
 
 > **Aviso.** Este repo contiene código decompilado de una app de terceros. No tiene relación con su
 > autor ni con Apple. No incluye el APK ni las claves de API del original; esas piezas se obtienen de
-> tu propia copia de la app. Es un repo **privado** de uso personal; antes de hacerlo público hay que
-> resolver el tema de derechos (ver [Aviso legal](#aviso-legal)).
+> tu propia copia de la app (ver [Aviso legal](#aviso-legal)).
 
 ## Contenido
 
@@ -304,8 +303,7 @@ Lo que antes eran páginas web abiertas desde el menú lateral de la app ahora v
 ## Aviso legal
 
 - El código de `app-source/app/src` es la salida de un decompilador sobre una app de terceros, con correcciones. Los derechos
-  son de su autor. El repo es privado y para uso personal e interoperabilidad; **no lo publiques ni lo redistribuyas** sin
-  resolver ese tema.
+  son de su autor.
 - No incluye el APK original, claves, datos del teléfono ni capturas con información personal.
 - Los íconos de apps de Apple provienen de recursos que Apple publica para diseñadores; los de apps de terceros son sus
   logotipos. Se usan solo en esta copia personal.
