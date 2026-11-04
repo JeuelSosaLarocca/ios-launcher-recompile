@@ -1,70 +1,70 @@
-# Política de privacidad
+# Privacy policy
 
-Última revisión: 4 de noviembre de 2026 (anuncios eliminados).
+Last reviewed: November 4, 2026 (ads removed).
 
-> Este texto describe qué hace con tus datos **esta copia recompilada** del launcher, según el código que contiene.
-> No es asesoramiento legal. Si alguna vez se distribuye a terceros, hay que revisarlo con un profesional y adaptarlo a las
-> normas que correspondan (por ejemplo RGPD, CCPA o las políticas de la tienda donde se publique).
+> This text describes what **this recompiled copy** of the launcher does with your data, based on the code it contains.
+> It is not legal advice. If it is ever distributed to third parties, have it reviewed by a professional and adapted to the
+> rules that apply (for example GDPR, CCPA, or the policies of the store where it is published).
 
-## 1. Qué es y quién responde por los datos
+## 1. What this is and who is responsible for the data
 
-Es una copia personal de un launcher de Android con estilo iOS (el original se llama *iOS Launcher* y es de LuuTinh
-Developer). La recompilé a partir de su código decompilado. **No hay servidores propios de este proyecto**: no existe una
-cuenta, un registro de usuarios ni un panel donde lleguen datos tuyos. Quien instala y usa la app es el responsable de lo que
-ocurre en su propio teléfono.
+This is a personal copy of an iOS-style Android launcher (the original is called *iOS Launcher* and is by LuuTinh
+Developer). I recompiled it from its decompiled code. **This project has no servers of its own**: there is no account, no user
+registry and no dashboard where your data could end up. Whoever installs and uses the app is responsible for what happens on
+their own phone.
 
-## 2. Qué datos usa la app y para qué
+## 2. What data the app uses and why
 
-Todo lo siguiente se procesa **en tu teléfono**. Los usos están deducidos del código y de los permisos declarados.
+Everything below is processed **on your phone**. The uses are inferred from the code and the declared permissions.
 
-| Permiso de Android | Para qué se usa | Se envía fuera del teléfono |
+| Android permission | What it is used for | Leaves the phone |
 |---|---|---|
-| Contactos (`READ_CONTACTS`) | Mostrar tus contactos favoritos en los widgets | No |
-| Llamadas (`CALL_PHONE`) | Llamar a un contacto favorito desde un widget | No (lo hace la app de teléfono) |
-| Calendario (`READ_CALENDAR`) | Mostrar eventos en el widget de calendario | No |
-| Ubicación (`ACCESS_FINE_LOCATION`, `ACCESS_COARSE_LOCATION`) | Saber dónde estás para el clima | **Sí**, a la API del clima (ver 3) |
-| Almacenamiento y fondo de pantalla (`READ_EXTERNAL_STORAGE`, `WRITE_EXTERNAL_STORAGE`, `SET_WALLPAPER`, `SET_WALLPAPER_HINTS`, `READ_WALLPAPER_INTERNAL`) | Elegir una foto y aplicarla de fondo, y leer el fondo actual | No |
-| Lista de apps (`QUERY_ALL_PACKAGES`) | Mostrar tus apps en la pantalla de inicio, la biblioteca y la búsqueda | No |
-| Desinstalar (`REQUEST_DELETE_PACKAGES`) | Pedir al sistema que desinstale una app que elijas | No |
-| Bluetooth (`BLUETOOTH`) | Mostrar la batería de dispositivos conectados en el widget de batería | No |
-| Red (`INTERNET`, `ACCESS_NETWORK_STATE`) | Consultar el clima | Ver 3 |
-| Servicios en segundo plano (`FOREGROUND_SERVICE`, `RECEIVE_BOOT_COMPLETED`, `WAKE_LOCK`, `BROADCAST_STICKY`) | Actualizar el clima y recuperar el estado tras reiniciar | No |
-| Widgets (`BIND_APPWIDGET`) | Alojar widgets en la pantalla de inicio | No |
-| Vibración (`VIBRATE`) | Respuesta táctil | No |
+| Contacts (`READ_CONTACTS`) | Show your favorite contacts in widgets | No |
+| Calls (`CALL_PHONE`) | Call a favorite contact from a widget | No (done by the phone app) |
+| Calendar (`READ_CALENDAR`) | Show events in the calendar widget | No |
+| Location (`ACCESS_FINE_LOCATION`, `ACCESS_COARSE_LOCATION`) | Know where you are for the weather | **Yes**, to the weather API (see 3) |
+| Storage and wallpaper (`READ_EXTERNAL_STORAGE`, `WRITE_EXTERNAL_STORAGE`, `SET_WALLPAPER`, `SET_WALLPAPER_HINTS`, `READ_WALLPAPER_INTERNAL`) | Pick a photo and set it as wallpaper, and read the current wallpaper | No |
+| App list (`QUERY_ALL_PACKAGES`) | Show your apps on the home screen, the library and in search | No |
+| Uninstall (`REQUEST_DELETE_PACKAGES`) | Ask the system to uninstall an app you choose | No |
+| Bluetooth (`BLUETOOTH`) | Show the battery of connected devices in the battery widget | No |
+| Network (`INTERNET`, `ACCESS_NETWORK_STATE`) | Fetch the weather | See 3 |
+| Background services (`FOREGROUND_SERVICE`, `RECEIVE_BOOT_COMPLETED`, `WAKE_LOCK`, `BROADCAST_STICKY`) | Update the weather and restore state after a reboot | No |
+| Widgets (`BIND_APPWIDGET`) | Host widgets on the home screen | No |
+| Vibration (`VIBRATE`) | Haptic feedback | No |
 
-Lo que la app guarda en el teléfono: la disposición de tu pantalla de inicio, una caché de íconos, tus ajustes y los últimos
-datos del clima. Se borra al desinstalar la app o al borrar sus datos desde los ajustes de Android.
+What the app stores on the phone: the layout of your home screen, an icon cache, your settings and the latest weather data. It
+is deleted when you uninstall the app or clear its data from Android settings.
 
-## 3. Qué sale del teléfono
+## 3. What leaves the phone
 
-1. **Clima.** Al actualizar el clima, la app consulta a *Visual Crossing* (`weather.visualcrossing.com`) con la ubicación o la
-   ciudad que elegiste. Esa empresa recibe esa consulta y tu dirección IP, y se rige por su propia política.
-2. **Anuncios.** Esta copia ya no muestra ni pide anuncios: se quitaron las llamadas de la pantalla de ajustes y del clima,
-   los permisos de publicidad (`AD_ID`, `ACCESS_ADSERVICES_*`) y los identificadores de AdMob. Los archivos del SDK de Google
-   Mobile Ads siguen dentro del paquete original de bibliotecas, pero el código no los usa ni los inicializa.
-3. **Nada más a propósito.** No encontré en la app cuentas, analítica propia ni servicios de estadísticas como Firebase. Pero
-   la app incluye bibliotecas de terceros que no revisé línea por línea, así que no puedo garantizar que no haya otras
-   conexiones.
+1. **Weather.** When the weather updates, the app queries *Visual Crossing* (`weather.visualcrossing.com`) with the location
+   or city you chose. That company receives the query and your IP address, and is governed by its own policy.
+2. **Ads.** This copy no longer shows or requests ads: the calls from the settings screen and the weather screen, the
+   advertising permissions (`AD_ID`, `ACCESS_ADSERVICES_*`) and the AdMob identifiers were removed. The files of the Google
+   Mobile Ads SDK are still inside the original library package, but the code neither uses nor initializes them.
+3. **Nothing else on purpose.** I found no accounts, no analytics of its own and no statistics services such as Firebase in the
+   app. But the app includes third-party libraries that I did not review line by line, so I cannot guarantee there are no
+   other connections.
 
-El proyecto no vende datos, no hace perfiles y no comparte nada con nadie más.
+The project does not sell data, does not build profiles and does not share anything with anyone else.
 
-## 4. Qué puedes controlar
+## 4. What you can control
 
-- **Permisos:** concedelos o retiralos en *Ajustes de Android → Apps → iOS Launcher → Permisos*. La app sigue funcionando sin
-  ellos, pero los widgets que dependen de cada permiso dejan de funcionar.
-- **Datos locales:** *Ajustes de Android → Apps → iOS Launcher → Almacenamiento → Borrar datos*, o desinstalar la app.
-- **Clima:** no actives la ubicación para el clima, o elegí una ciudad a mano si la app lo permite.
+- **Permissions:** grant or revoke them in *Android Settings → Apps → iOS Launcher → Permissions*. The app keeps working
+  without them, but the widgets that depend on each permission stop working.
+- **Local data:** *Android Settings → Apps → iOS Launcher → Storage → Clear data*, or uninstall the app.
+- **Weather:** do not enable location for the weather, or pick a city by hand if the app allows it.
 
-## 5. Menores
+## 5. Minors
 
-La app no está dirigida a menores de edad ni les pide datos.
+The app is not aimed at minors and does not ask them for data.
 
-## 6. Cambios
+## 6. Changes
 
-Si cambia lo que hace la app con tus datos, se actualiza este documento y su fecha de revisión. El historial queda en el
-repositorio.
+If what the app does with your data changes, this document and its review date are updated. The history stays in the
+repository.
 
-## 7. Contacto
+## 7. Contact
 
-Para preguntas sobre este documento o sobre esta copia, abrí un *issue* en el repositorio del proyecto.
-Para el launcher original, el contacto es su desarrollador, LuuTinh Developer.
+For questions about this document or this copy, open an *issue* in the project repository.
+For the original launcher, the contact is its developer, LuuTinh Developer.

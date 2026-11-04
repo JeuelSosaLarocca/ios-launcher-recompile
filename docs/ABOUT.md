@@ -1,38 +1,38 @@
-# Acerca de
+# About
 
-## Qué es esto
+## What this is
 
-Una copia **recompilable** de un launcher de Android con estilo iOS, hecha para uso personal. Parte del APK de la app
-*iOS Launcher* (`com.luutinhit.launcherios`, versión 8.9.2, código de versión 892), decompilado y corregido hasta que compila.
-Cómo está armado y cómo se construye está explicado en el [README](../README.md).
+A **recompilable** copy of an iOS-style Android launcher, made for personal use. It starts from the APK of the
+*iOS Launcher* app (`com.luutinhit.launcherios`, version 8.9.2, version code 892), decompiled and fixed until it compiles.
+How it is put together and how it is built is explained in the [README](../README.md).
 
-## Qué hace el launcher
+## What the launcher does
 
-- Pantalla de inicio con páginas, dock y carpetas.
-- Vista *Hoy* con widgets (clima, batería, calendario, fotos, contactos favoritos).
-- Biblioteca de aplicaciones con categorías y buscador.
-- Buscador de apps y búsqueda web.
-- Aplicaciones ocultas, cambio de ícono y de nombre por app.
-- Fondos de pantalla y efectos de desenfoque y de vidrio líquido.
+- Home screen with pages, a dock and folders.
+- *Today* view with widgets (weather, battery, calendar, photos, favorite contacts).
+- App Library with categories and a search box.
+- App search and web search.
+- Hidden apps, and per-app icon and name changes.
+- Wallpapers, plus blur and liquid-glass effects.
 
-La guía de uso está en [HOW-TO-USE.md](HOW-TO-USE.md) y lo que hace con tus datos, en [PRIVACY.md](PRIVACY.md).
+The usage guide is in [HOW-TO-USE.md](HOW-TO-USE.md) and what it does with your data is in [PRIVACY.md](PRIVACY.md).
 
-## Qué cambia en esta copia
+## What changes in this copy
 
-Idioma español, íconos de iOS 27 en versión clara y oscura que cambian con el tema del sistema, sin el pedido de calificación
-ni los enlaces a Play Store, sin la imagen de cabecera ni el menú lateral de los ajustes. La lista completa y los motivos
-están en [`app-source/docs/RECOMPILE-NOTES.md`](../app-source/docs/RECOMPILE-NOTES.md).
+Spanish language, iOS 27 icons in light and dark versions that follow the system theme, no rating prompt and no Play Store
+links, no header image and no side menu in the settings, and no ads. The full list and the reasons are in
+[`app-source/docs/RECOMPILE-NOTES.md`](../app-source/docs/RECOMPILE-NOTES.md).
 
-## Datos técnicos
+## Technical details
 
-- Android 5.0 (API 21) o superior; compilada para API 36.
-- Solo arquitectura `arm64-v8a`.
-- Firma de depuración: no sirve para publicarla en una tienda.
+- Android 5.0 (API 21) or higher; compiled for API 36.
+- `arm64-v8a` architecture only.
+- Debug signature: it cannot be used to publish to a store.
 
-## Créditos y límites
+## Credits and limits
 
-- El launcher original y su código son de **LuuTinh Developer**. Esta copia no tiene relación con su autor.
-- "iOS", "iPhone" y los nombres y diseños de las apps de Apple son marcas de Apple Inc.; este proyecto no está afiliado a Apple.
-- Los íconos de apps de terceros pertenecen a sus dueños y se usan solo en esta copia personal.
-- Las herramientas de construcción (dex2jar, tiny-remapper, ASM, smali, jadx) son proyectos de código abierto con sus propias licencias.
-- El repositorio es privado y para uso personal; antes de publicarlo hay que resolver los derechos del código decompilado.
+- The original launcher and its code belong to **LuuTinh Developer**. This copy has no relationship with its author.
+- "iOS", "iPhone" and the names and designs of Apple's apps are trademarks of Apple Inc.; this project is not affiliated with Apple.
+- Third-party app icons belong to their owners and are used only in this personal copy.
+- The build tools (dex2jar, tiny-remapper, ASM, smali, jadx) are open-source projects with their own licenses.
+- The repository is for personal use; before making it public, the rights to the decompiled code must be resolved.

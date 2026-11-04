@@ -1,67 +1,67 @@
-# Cómo usar el launcher
+# How to use the launcher
 
-Guía rápida de esta copia. Las capturas de ejemplo están en el [README](../README.md). El original traía un video de ayuda
-en YouTube; esta guía lo reemplaza.
+Quick guide to this copy. Example screenshots are in the [README](../README.md). The original shipped a help video on YouTube;
+this guide replaces it.
 
-## 1. Empezar
+## 1. Getting started
 
-1. Instalá la app (pasos en el [README](../README.md#instalar-y-usar)).
-2. Abrila una vez desde el ícono **iOS Launcher**. Es la pantalla de ajustes del launcher.
-3. Elegila como launcher por defecto: en esa pantalla, la fila **Make Default Launcher**, o en Android
-   *Ajustes → Apps → Apps predeterminadas → Aplicación de inicio*.
-4. Apretá el botón de inicio: ya ves la pantalla de inicio al estilo iOS.
+1. Install the app (steps in the [README](../README.md#install-and-use)).
+2. Open it once from the **iOS Launcher** icon. That is the launcher's settings screen.
+3. Make it the default launcher: on that screen, the **Make Default Launcher** row, or in Android
+   *Settings → Apps → Default apps → Home app*.
+4. Press the home button: you now see the iOS-style home screen.
 
-Los permisos se piden cuando una función los necesita; podés negarlos y seguir usando el resto (ver [PRIVACY.md](PRIVACY.md)).
+Permissions are requested when a feature needs them; you can deny them and keep using the rest (see [PRIVACY.md](PRIVACY.md)).
 
-## 2. La pantalla de inicio
+## 2. The home screen
 
-- **Páginas e íconos:** deslizá a izquierda y derecha para cambiar de página. Mantené presionado un ícono para moverlo,
-  cambiarlo de página o quitarlo de la pantalla de inicio (la app sigue instalada y aparece en la biblioteca).
-- **Carpetas:** arrastrá un ícono sobre otro para crear una carpeta; tocala para abrirla.
-- **Dock:** los cuatro íconos de abajo se ven en todas las páginas.
-- **Buscar:** el botón *Buscar* sobre el dock abre el buscador de apps y la búsqueda web.
+- **Pages and icons:** swipe left and right to change page. Long-press an icon to move it, send it to another page or remove
+  it from the home screen (the app stays installed and appears in the library).
+- **Folders:** drag one icon onto another to create a folder; tap it to open it.
+- **Dock:** the four icons at the bottom are visible on every page.
+- **Search:** the *Search* button above the dock opens app search and web search.
 
-## 3. Vista Hoy (widgets)
+## 3. Today view (widgets)
 
-Desde la primera página, deslizá hacia la derecha. Ahí viven los widgets: clima, batería, calendario, foto, contactos
-favoritos y otros. El botón **Editar**, al final de la página, sirve para agregar o quitar widgets.
+From the first page, swipe right. The widgets live there: weather, battery, calendar, photo, favorite contacts and others.
+The **Edit** button at the end of the page lets you add or remove widgets.
 
-## 4. Biblioteca de aplicaciones
+## 4. App Library
 
-Desde la última página, deslizá hacia la izquierda. Las apps están agrupadas por categoría (reciente, juego, audio, video,
-imagen, social, etc.) y hay un buscador arriba. Es el lugar donde están **todas** tus apps, aunque no estén en ninguna página.
+From the last page, swipe left. Apps are grouped by category (recent, games, audio, video, images, social, etc.) and there is a
+search box at the top. It is the place where **all** your apps are, even if they are not on any page.
 
-## 5. Los ajustes del launcher
+## 5. The launcher settings
 
-Abrí el ícono **iOS Launcher** para ver la lista. Cada fila abre su propia pantalla:
+Open the **iOS Launcher** icon to see the list. Each row opens its own screen:
 
-| Fila | Qué permite |
+| Row | What it lets you do |
 |---|---|
-| Disposición | Cómo se ordenan los íconos y las páginas |
-| Clima | Configurar el widget y la pantalla del clima |
-| Vidrio líquido | El efecto de vidrio de los elementos translúcidos |
-| Efecto de desenfoque | El desenfoque de fondo |
-| Animaciones | Animaciones al abrir y cerrar |
-| Fondos de pantalla | Elegir y cambiar el fondo |
-| Cambiar el ícono | Reemplazar el ícono de una app |
-| Cambiar nombre | Cambiar el nombre que se muestra de una app |
-| Biblioteca de aplicaciones | Opciones de la biblioteca |
-| Aplicaciones ocultas | Ocultar apps de la pantalla de inicio |
-| Make Default Launcher | Elegir este launcher como el de inicio |
-| Lanzador de recarga | Pide confirmación y recarga la pantalla de inicio |
+| Layout | How icons and pages are arranged |
+| Weather | Configure the weather widget and screen |
+| Liquid glass | The glass effect of translucent elements |
+| Blur effect | The background blur |
+| Animations | Animations when opening and closing |
+| Wallpapers | Choose and change the wallpaper |
+| Change icon | Replace an app's icon |
+| Rename | Change the displayed name of an app |
+| App Library | Library options |
+| Hidden apps | Hide apps from the home screen |
+| Make Default Launcher | Choose this launcher as the home app |
+| Reload launcher | Asks for confirmation and reloads the home screen |
 
-La descripción de cada fila sale de su nombre y de lo que hace el código; si una opción se comporta distinto, tiene prioridad
-lo que ves en pantalla.
+The description of each row comes from its name and from what the code does; if an option behaves differently, what you see on
+screen takes priority. The app's own labels are in Spanish, so a row may appear under its Spanish name.
 
-## 6. Tema claro y oscuro
+## 6. Light and dark theme
 
-Los íconos tienen versión clara y oscura y cambian solos cuando Android pasa de un tema al otro. Los íconos de Reloj y Calendario
-se dibujan en vivo (hora y fecha reales) y mantienen su cara blanca en los dos temas.
+The icons have light and dark versions and change on their own when Android switches from one theme to the other. The Clock and
+Calendar icons are drawn live (real time and date) and keep their white face in both themes.
 
-## 7. Si algo no anda
+## 7. If something doesn't work
 
-- **Un ícono se ve mal o desactualizado:** abrí *Ajustes → Lanzador de recarga* y aceptá.
-- **La pantalla de inicio no carga:** detené la app desde los ajustes de Android y volvé a abrirla.
-- **La app se cierra:** anotá qué estabas haciendo, mirá `adb logcat` si podés y abrí un *issue* en el repositorio.
-- **Aparece la app de Samsung (u otro launcher) en vez de esta:** tu teléfono dejó de usar este launcher como el de inicio;
-  repetí el paso 3 de *Empezar*.
+- **An icon looks wrong or out of date:** open *Settings → Reload launcher* and accept.
+- **The home screen doesn't load:** stop the app from Android settings and open it again.
+- **The app closes:** note what you were doing, check `adb logcat` if you can, and open an *issue* in the repository.
+- **Samsung's launcher (or another one) shows up instead of this one:** your phone stopped using this launcher as the home app;
+  repeat step 3 of *Getting started*.
