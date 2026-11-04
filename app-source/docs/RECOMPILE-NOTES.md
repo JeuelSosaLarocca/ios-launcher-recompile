@@ -23,6 +23,18 @@ Methods marked `useSource` today:
 * `IOSLauncher.startRatingActivity()`: now empty, so the "rate 5 stars" dialog never opens by itself. The Rate buttons in the settings still open it.
 * `LauncherAppState.getInstance()`: also registers `ThemeIconReloader`, which reloads the icons when the system theme changes (icons have light and dark versions). On a reload it empties both the icon cache and `IconCache.f16346e`: that map gives each iOS icon to **one** app only (`m8023y`), so if it is kept, apps that already own an icon (Messages, Camera, Settings) fall back to their own icon after the switch.
 
+Play Store links removed (`tools/scripts/remove_play_store_links.py`, resources and manifest only, no code change). Views are
+hidden with `visibility="gone"` rather than deleted, because the original bytecode calls `findViewById(...).setOnClickListener(...)` on them:
+
+* Settings: the card "Rating 5 star / Download other apps" and the card with the developer's other apps (Lock Screen, Control Center,
+  AssistiveTouch), which open Play Store pages when those apps are not installed.
+* Main screen of the app: share (it shares a Play Store link), like, and the floating star button.
+* Search: the "Search Store" row (opens a Play Store search) and the divider above it. Not tried on the phone.
+* Manifest: `RatingActivity` disabled (`android:enabled="false"`); the `com.android.vending.*` and `com.android.stamp.*` meta-data are removed.
+
+Not touched: the Play Store app's own shortcut on the home screen (and its App Store icon), and the `market://` fallback in
+`res/xml/default_workspace_*x4.xml`.
+
 Known limit: the live Clock and Calendar icons are drawn in code (`B3/C0069l`, `B3/C0068k`, tinted by `CustomIconView.setTint`), not from `drawable/`, so they keep a white face in both themes.
 
 D8 sometimes moves the body of a marked method into a synthetic `$invoke$special$<name>` and leaves

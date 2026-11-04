@@ -32,6 +32,7 @@
             android:src="@drawable/safari_icon"/>
     </LinearLayout>
     <View
+        android:visibility="gone"
         android:background="@color/white_30"
         android:layout_width="match_parent"
         android:layout_height="1px"/>
@@ -39,6 +40,7 @@
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:id="@+id/search_store"
+        android:visibility="gone"
         android:background="@drawable/item_button_state"
         android:padding="10dp"
         android:focusable="true"
