@@ -32,9 +32,13 @@ hidden with `visibility="gone"` rather than deleted, because the original byteco
 * Search: the "Search Store" row (opens a Play Store search) and the divider above it. Not tried on the phone.
 * Manifest: `RatingActivity` disabled (`android:enabled="false"`); the `com.android.vending.*` and `com.android.stamp.*` meta-data are removed.
 
-Settings screen header removed (`tools/scripts/hide_settings_header.py`, `activity_main.xml` only): the "LAUNCHER IOS" banner (`header_layout`) and the
-mail button (`action_email`) are hidden; the menu button is tinted `colorAccent` so it shows on the plain background, and the list gets
-`layout_goneMarginTop` so it starts below it. Checked on the phone (dark theme only).
+Settings screen header removed (`tools/scripts/hide_settings_header.py`, `activity_main.xml` only): the "LAUNCHER IOS" banner (`header_layout`) is
+made **invisible, 1dp high and without its image**, the mail button (`action_email`) is gone; the menu button is tinted `colorAccent` so it shows on
+the plain background, and the list gets `layout_marginTop="64dp"` so it starts below it. Checked on the phone (dark theme only).
+
+The banner must not be `gone`: the list's overscroll bounce (`D/C0157a`, case 11) scales it with `overscroll / header.getMeasuredHeight() + 1`. With a
+gone header that is a division by zero, `View.setScaleX(Infinity)` throws `IllegalArgumentException` and the launcher process crashed while
+scrolling the settings list. After the fix, four rounds of swipes with overscroll at both ends gave no crash.
 
 Not touched: the Play Store app's own shortcut on the home screen (and its App Store icon), and the `market://` fallback in
 `res/xml/default_workspace_*x4.xml`.

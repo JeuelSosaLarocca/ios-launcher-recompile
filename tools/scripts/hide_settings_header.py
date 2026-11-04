@@ -1,17 +1,21 @@
 """Remove the banner image and the mail button from the top of the app's settings screen.
 
 res/layout/activity_main.xml:
-  * header_layout   (the "LAUNCHER IOS" banner image)  -> visibility=gone
-  * action_email    (the mail button)                   -> visibility=gone
-  * action_navigation (menu button, white icon that sat on the banner) -> tinted with colorAccent so it is
-    visible on the plain background
-  * scroll_settings (the list, anchored under the banner) -> layout_goneMarginTop, so it starts below the menu
-    button instead of at the top of the screen
+  * header_layout   (the "LAUNCHER IOS" banner)  -> invisible, 1dp high, no image. It must NOT be gone: the settings
+    list's overscroll bounce (D/C0157a, case 11) computes  scale = overscroll / header.getMeasuredHeight() + 1  and
+    scales the header with it; a gone view measures 0, the division gives Infinity and View.setScaleX() throws
+    IllegalArgumentException, which crashed the launcher process while scrolling the list.
+  * action_email    (the mail button)             -> gone
+  * action_navigation (menu button, white icon that sat on the banner) -> tinted with colorAccent so it shows on
+    the plain background
+  * scroll_settings (the list, anchored under the banner) -> layout_marginTop 64dp, so it starts below the menu button
 
-Hidden, not deleted: MainActivity still calls findViewById(R.id.header_layout / R.id.action_email) and
-setOnClickListener on them. Keeps the file's newline style (CRLF). Idempotent.
+Nothing is deleted: MainActivity still calls findViewById(R.id.header_layout / R.id.action_email) and
+setOnClickListener / setScaleX on them. Works from the original file and from an earlier version of this script
+(which used visibility=gone on the banner). Keeps the file's newline style (CRLF). Idempotent.
 Usage: python -I hide_settings_header.py <app/src/main>
 """
+import re
 import sys
 from pathlib import Path
 
@@ -27,26 +31,38 @@ def write(p, text, nl):
     p.write_bytes(text.replace("\n", nl).encode("utf-8"))
 
 
-def add_attr(text, view_id, attr):
-    """Adds one attribute line right after the android:id line of the view, unless it is already there."""
+def element_span(text, view_id):
+    """(start, end) of the opening tag of the element that has android:id=view_id, '>' or '/>' included."""
     idx = text.index(f'android:id="@+id/{view_id}"')
-    name = attr.split("=")[0]
-    if name in text[idx:text.index(">", idx)]:
-        return text
-    line_end = text.index("\n", idx)
-    line_start = text.rindex("\n", 0, idx) + 1
-    before = text[line_start:idx]
+    start = text.rindex("<", 0, idx)
+    end = text.index(">", idx) + 1
+    return start, end
+
+
+def edit_tag(text, view_id, set_attrs, drop_attrs=()):
+    """set_attrs: {name: value} (added after the android:id line, or replaced in place); drop_attrs: names to remove."""
+    start, end = element_span(text, view_id)
+    tag = text[start:end]
+    for name in list(drop_attrs) + list(set_attrs):
+        tag = re.sub(r'\n[ \t]*' + re.escape(name) + r'="[^"]*"', "", tag)
+    id_line_end = tag.index("\n", tag.index(f'android:id="@+id/{view_id}"'))
+    line_start = tag.rindex("\n", 0, tag.index(f'android:id="@+id/{view_id}"')) + 1
+    before = tag[line_start:tag.index(f'android:id="@+id/{view_id}"')]
     indent = before[: len(before) - len(before.lstrip())]
-    return text[:line_end + 1] + indent + attr + "\n" + text[line_end + 1:]
+    added = "".join(f'\n{indent}{name}="{value}"' for name, value in set_attrs.items())
+    tag = tag[:id_line_end] + added + tag[id_line_end:]
+    return text[:start] + tag + text[end:]
 
 
 def main(root):
     p = Path(root) / "res/layout/activity_main.xml"
     t, nl = read(p)
-    t = add_attr(t, "header_layout", 'android:visibility="gone"')
-    t = add_attr(t, "action_email", 'android:visibility="gone"')
-    t = add_attr(t, "action_navigation", 'android:tint="@color/colorAccent"')
-    t = add_attr(t, "scroll_settings", 'app:layout_goneMarginTop="64dp"')
+    t = edit_tag(t, "header_layout",
+                 {"android:visibility": "invisible", "android:layout_height": "1dp"},
+                 drop_attrs=("android:src", "android:adjustViewBounds"))
+    t = edit_tag(t, "action_email", {"android:visibility": "gone"})
+    t = edit_tag(t, "action_navigation", {"android:tint": "@color/colorAccent"})
+    t = edit_tag(t, "scroll_settings", {"android:layout_marginTop": "64dp"}, drop_attrs=("app:layout_goneMarginTop",))
     write(p, t, nl)
     print(f"{p}: done")
 
