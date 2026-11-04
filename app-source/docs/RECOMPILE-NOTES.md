@@ -32,6 +32,10 @@ hidden with `visibility="gone"` rather than deleted, because the original byteco
 * Search: the "Search Store" row (opens a Play Store search) and the divider above it. Not tried on the phone.
 * Manifest: `RatingActivity` disabled (`android:enabled="false"`); the `com.android.vending.*` and `com.android.stamp.*` meta-data are removed.
 
+Settings screen header removed (`tools/scripts/hide_settings_header.py`, `activity_main.xml` only): the "LAUNCHER IOS" banner (`header_layout`) and the
+mail button (`action_email`) are hidden; the menu button is tinted `colorAccent` so it shows on the plain background, and the list gets
+`layout_goneMarginTop` so it starts below it. Checked on the phone (dark theme only).
+
 Not touched: the Play Store app's own shortcut on the home screen (and its App Store icon), and the `market://` fallback in
 `res/xml/default_workspace_*x4.xml`.
 

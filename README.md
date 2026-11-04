@@ -41,6 +41,7 @@ cartel de calificación).
 | Cambio automático de tema | `ThemeIconReloader` vacía la caché de íconos y recarga la pantalla cuando el sistema pasa de claro a oscuro, también si el cambio ocurrió con el launcher cerrado. |
 | Sin cartel de calificación | `IOSLauncher.startRatingActivity()` está vacío: el pedido de "5 estrellas" no aparece solo. Los botones de calificar de los ajustes siguen funcionando. |
 | Sin enlaces a Play Store | Se ocultan en los ajustes la tarjeta de "Clasificación 5 estrellas / Descarga otras aplicaciones" y la de las otras apps del desarrollador (Lock Screen, Control Center, AssistiveTouch); en la pantalla principal de la app, compartir (comparte un enlace de Play Store), calificar y el botón flotante de la estrella; y en la búsqueda, "Buscar en la tienda". En el manifest se desactiva `RatingActivity` y se quitan las marcas de distribución de Play. Es solo de recursos (`tools/scripts/remove_play_store_links.py`). No se tocó el acceso directo a la app Play Store de la pantalla de inicio. |
+| Ajustes sin cabecera | En la pantalla de ajustes de la app se ocultan la imagen "LAUNCHER IOS" de arriba y el botón de correo; el botón de menú queda teñido para que se vea y la lista empieza debajo (`tools/scripts/hide_settings_header.py`). |
 | Primera carga sin "Play Auto Installs" | `LauncherProvider.loadDefaultFavoritesIfNecessary()` ignora el layout de Samsung que dejaba íconos sin posición. |
 
 Cada cambio de comportamiento está registrado en [`app-source/docs/RECOMPILE-NOTES.md`](app-source/docs/RECOMPILE-NOTES.md).
@@ -245,6 +246,7 @@ python -I tools/scripts/build_theme_icons.py <carpeta-figma> <carpeta-íconos-de
 | `find_infinite_loops.py`, `mark_original_bytecode.py` | Detectan bucles infinitos y métodos que jadx marcó como dudosos. |
 | `build_theme_icons.py`, `tools/icondump` | Íconos claro/oscuro (ver arriba). |
 | `restore_api_key.py` | Restaura la clave de API del manifest desde tu APK. |
+| `hide_settings_header.py` | Oculta la imagen de cabecera y el botón de correo de los ajustes de la app (solo layout). |
 | `remove_play_store_links.py` | Oculta o quita lo que apunta a Play Store (recursos y manifest). Conserva los saltos de línea de cada archivo y se puede repetir sin efecto. |
 | `match_*.py`, `class_digest.py`, `method_summary.py` | Ayudas para ponerle nombres a mano al código ofuscado. |
 
