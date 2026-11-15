@@ -352,6 +352,11 @@ public class IOSLauncher extends Launcher {
 
     /* JADX INFO: Access modifiers changed from: private */
     public void setOrRestoreWallpaper() {
+        com.luutinhit.launcher6.JadxSupport.useSource();
+        // Never touch the system wallpaper automatically.
+        if (true) {
+            return;
+        }
         File fileWallpaperFromStorage = getFileWallpaperFromStorage();
         if (fileWallpaperFromStorage != null) {
             setWallpaperFromFile(fileWallpaperFromStorage);
@@ -379,6 +384,11 @@ public class IOSLauncher extends Launcher {
 
     /* JADX INFO: Access modifiers changed from: private */
     public void showSuggestWallpaperChangeDialog() {
+        com.luutinhit.launcher6.JadxSupport.useSource();
+        // Never nag about the wallpaper: the system wallpaper is not changed automatically.
+        if (true) {
+            return;
+        }
         if (this.mTinyDB.f137a.getBoolean("not_show_suggest_blur_effect_dialog", false)) {
             return;
         }

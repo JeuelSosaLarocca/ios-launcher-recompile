@@ -41,6 +41,8 @@ it starts from the Play Store APK, decompiles it, fixes the code until it compil
 | No rating prompt | `IOSLauncher.startRatingActivity()` is empty: the "5 stars" request no longer appears on its own. The rate buttons in the settings still work. |
 | No Play Store links | In the settings, the "5-star rating / Download other apps" card and the card for the developer's other apps (Lock Screen, Control Center, AssistiveTouch) are hidden; on the app's main screen, share (which shares a Play Store link), rate and the floating star button; and in search, "Search in the store". In the manifest, `RatingActivity` is disabled and the Play distribution markers are removed. Resources only (`tools/scripts/remove_play_store_links.py`). The Play Store app shortcut on the home screen was left alone. |
 | No ads | The Google Mobile Ads (AdMob) calls on the settings and weather screens are emptied (`SettingsView.m8335E`, `WeatherActivity.m8369T`), and the ad permissions (`AD_ID`, `ACCESS_ADSERVICES_*`), meta-data, activities, service, provider and ad unit IDs are removed from the manifest and strings. The SDK files remain inside `original-libs.dex`, unused. |
+| Wallpaper left alone | The launcher no longer rewrites the system wallpaper on its own or asks about it (`IOSLauncher.setOrRestoreWallpaper()` and `showSuggestWallpaperChangeDialog()` are empty). |
+| Liquid glass change keeps the process | Changing liquid glass (and the other settings that need a fresh home screen) used to kill and relaunch the process, which also killed the live wallpaper service and left the dock without its glass background. `Utilities.m8174z` now recreates the running `Launcher` instead. |
 | Settings without header | On the app's settings screen, the "LAUNCHER IOS" image at the top and the mail button are removed (`tools/scripts/hide_settings_header.py`). The image is not hidden with `gone`; it stays invisible, 1dp tall and without a picture: the scroll bounce divides by its height and with height 0 the app crashed on scroll. |
 | No side menu | The menu that slid in from the left of the settings and its button are removed; the list starts at the top. "Privacy policy", "How to use" and "About" were web pages of the developer and now live in the repository, rewritten, in [`docs/`](docs/); "Website" is dropped with no replacement; "Reload launcher" is now the last row of the settings list. The `DrawerLayout` and the `NavigationView` stay in the layout (the original code looks for them) but hidden and locked (`tools/scripts/remove_drawer_menu.py`). |
 | First load without "Play Auto Installs" | `LauncherProvider.loadDefaultFavoritesIfNecessary()` ignores the Samsung layout that left icons without a position. |
@@ -208,8 +210,10 @@ Without that marker the change compiles but **does not reach the APK**, because 
 - Methods that contain a `new java/lang/Object` mistyped by dex2jar (`A2.run`, `W1.onCreate`) keep using the source.
 
 Methods with `useSource` today: `LauncherProvider.loadDefaultFavoritesIfNecessary()`, `IOSLauncher.startRatingActivity()`,
+`IOSLauncher.setOrRestoreWallpaper()`, `IOSLauncher.showSuggestWallpaperChangeDialog()`, `Utilities.m8174z(Context)`,
 `LauncherAppState.getInstance()` and `MainActivity.reloadLauncher(View)` (a new method, called by the layout with
-`android:onClick`).
+`android:onClick`). Do not mark methods of `IOSLauncherCallbacks`: they read fields of `IOSLauncher` that are not accessible
+from that class in the original dex (`IllegalAccessError` at start).
 
 **New classes used only by a layout** (for example `LockedDrawerLayout`): `DexMerge` only includes a new class if some marked
 method reaches it, so these are listed by hand in `app-source/app/compiled-extra-classes.txt`.

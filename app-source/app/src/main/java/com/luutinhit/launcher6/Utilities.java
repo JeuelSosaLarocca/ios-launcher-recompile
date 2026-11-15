@@ -738,7 +738,27 @@ public abstract class Utilities {
     }
 
     /* JADX INFO: renamed from: z */
-    public static void m8174z(Context context) {
-        new Handler(LauncherModel.sWorkerThread.getLooper()).postDelayed(new MergedIdleRunnable(10, context), 250L);
+    public static void m8174z(final Context context) {
+        com.luutinhit.launcher6.JadxSupport.useSource();
+        // Used after a setting that needs a fresh home screen (liquid glass, dock, labels...). It used to kill the
+        // whole process and relaunch it with an alarm; that also killed the live wallpaper service, which made
+        // Android fall back to its default static wallpaper and left the dock without its glass background.
+        // Recreate the running Launcher instead; keep the old restart only when there is no Launcher to recreate.
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    LauncherAppState launcherAppState = LauncherAppState.getInstance();
+                    Launcher launcher = launcherAppState != null ? launcherAppState.f16224g : null;
+                    if (launcher != null && !launcher.isFinishing() && !launcher.isDestroyed()) {
+                        launcher.recreate();
+                        return;
+                    }
+                } catch (Throwable th) {
+                    th.getMessage();
+                }
+                new MergedIdleRunnable(10, context).run();
+            }
+        }, 250L);
     }
 }
